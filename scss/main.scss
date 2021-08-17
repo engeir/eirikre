@@ -36,11 +36,13 @@ main {
         right: 20%;
     }
 }
-
-// main h1  {
-//     color: $mywhite;
-// }
-
+main p {
+    padding-bottom: 10px;
+    padding-top: 0;
+    color: $mywhite;
+    line-height: 25px;
+    font-size: 18px;
+}
 main a{
     color: pink;
     text-decoration: none;
@@ -220,7 +222,9 @@ button{
     border-radius: 25px;
     font-weight: bold;
     border: 2px solid $mygray;
-    background: transparent;
+    // background: transparent;
+    background-color: $myblack;
+    // opacity: .8;
     color: $mywhite;
     cursor: pointer;
     position: relative;
@@ -241,11 +245,12 @@ span{
     left: 0;
     bottom: 0;
     z-index: -1;
-    transition: .5s;
+    // transition: .5s;
 }
 button a{
     text-decoration: none;
     color: $mywhite;
+    display: block;
 }
 button:hover span{
     width: 100%;
@@ -292,6 +297,7 @@ button:hover{
 
 .page-footer ul li{
     display:inline-block;
+    padding-bottom: 3px;
 }
 
 .page-footer .fa:hover {
@@ -300,15 +306,39 @@ button:hover{
 
 .page-footer .fa{
     padding: 0;
-    width: 50px;
+    width: 45px;
     height: 50px;
     font-size: 25px;
     line-height: 10px;
     color: $mywhite;
 }
 
+.page-footer img {
+    border-radius: 3px;
+}
+
+.page-footer .wos{
+    position: relative;
+    left: -13px;
+    // bottom: -3px;
+}
+.page-footer .insta{
+    position: relative;
+    left: -13px;
+    // bottom: -3px;
+}
+
+.page-footer .insta:hover {
+    mask: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("images/instagram-logo.png");
+}
+
+.page-footer .wos:hover {
+    mask: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("images/wallet-of-satoshi-icon.png");
+}
+
 .page-footer .fa-twitter {
-    // background: #55ACEE;
+    position: relative;
+    left: -5px;
     color: #55acee;
 }
 
