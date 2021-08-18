@@ -79,7 +79,7 @@ main .fa:hover {
 .banner {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("images/collatz_sea_weed_bw.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("images/collatz_sea_weed_color5.webp");
   background-size: cover;
   background-position: center; }
 

@@ -97,8 +97,17 @@ main .fa:hover {
 .banner{
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_bw.webp");
-    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_bw.jpg");
+    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_bw.webp");
+    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color1.webp");
+    // Nahh
+    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color2.webp");
+    // Purple
+    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color3.webp");
+    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color4.webp");
+    background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color5.webp");
+    // Nahh
+    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color6.webp");
+    // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color7.webp");
     background-size: cover;
     background-position: center;
 }
