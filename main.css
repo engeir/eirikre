@@ -45,6 +45,19 @@ main a:visited:hover {
 main a:visited {
   color: #ff99aa; }
 
+main a code {
+  color: pink;
+  text-decoration: none; }
+
+main a code:hover {
+  color: #1b1b1b; }
+
+main a code:visited:hover {
+  color: #505050; }
+
+main a code:visited {
+  color: #ff99aa; }
+
 main .fa {
   padding: 0;
   width: 50px;
@@ -55,6 +68,21 @@ main .fa {
 
 main .fa:hover {
   color: #505050; }
+
+p code {
+  border-radius: 5px;
+  background-color: #505050;
+  color: #ddd;
+  font-size: 14px;
+  padding: 2px; }
+
+pre code {
+  border-radius: 10px;
+  background-color: #11221e;
+  border: 1px solid black;
+  color: #ddd;
+  display: block;
+  padding: 10px; }
 
 .cover-info {
   backdrop-filter: blur(3px);
@@ -277,5 +305,8 @@ button:hover {
 
 .page-footer .fa-linkedin {
   color: #0077b5; }
+
+.page-footer .fa-git-square {
+  color: #f1502f; }
 
 /*# sourceMappingURL=main.css.map */

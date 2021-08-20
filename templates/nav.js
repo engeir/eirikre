@@ -25,6 +25,7 @@ footer.innerHTML = `
     <li><a href="images/wallet-of-satoshi.png"><img class="wos"
     style="max-height:16px;max-width:16px" src="images/wallet-of-satoshi-icon.png"
     alt="Wallet of Satoshi"></a></li>
+    <li><a href="https://github.com/engeir/flottflyt"><i class="fa fa-git-square"></i></a></li>
   </ul>
 </footer>
 `

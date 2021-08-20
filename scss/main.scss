@@ -5,6 +5,10 @@ $linkPurple: rgb(98, 16, 250);
 $mygray: #505050;
 $mywhite: #ddd;
 $myblack: #1b1b1b;
+$codegreen: #206020;
+$darkblue: #161a22;
+$darkgreen: #142a24;
+$verydarkgreen: #11221e;
 
 html {
     font-size: 100%;
@@ -56,6 +60,19 @@ main a:visited:hover{
 main a:visited{
     color: $linkVisited;
 }
+main a code{
+    color: pink;
+    text-decoration: none;
+}
+main a code:hover{
+    color: $myblack;
+}
+main a code:visited:hover{
+    color: $mygray;
+}
+main a code:visited{
+    color: $linkVisited;
+}
 
 main .fa{
     padding: 0;
@@ -68,6 +85,25 @@ main .fa{
 
 main .fa:hover {
     color: $mygray;
+}
+
+p code {
+    border-radius: 5px;
+    background-color: $mygray;
+    // border: 1px solid black;
+    color: $mywhite;
+    font-size: 14px;
+    // display: block;
+    padding: 2px;
+}
+
+pre code {
+    border-radius: 10px;
+    background-color: $verydarkgreen;
+    border: 1px solid black;
+    color: $mywhite;
+    display: block;
+    padding: 10px;
 }
 
 .cover-info {
@@ -355,5 +391,9 @@ button:hover{
 }
 
 .page-footer .fa-linkedin {
-  color: #0077b5;
+    color: #0077b5;
+}
+
+.page-footer .fa-git-square {
+    color: #f1502f;
 }
