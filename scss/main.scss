@@ -95,6 +95,7 @@ p code {
     font-size: 14px;
     // display: block;
     padding: 2px;
+    overflow-wrap: anywhere;
 }
 
 pre code {
@@ -365,6 +366,11 @@ button:hover{
     border-radius: 3px;
 }
 
+.page-footer .monero{
+    position: relative;
+    left: -5px;
+    // bottom: -3px;
+}
 .page-footer .wos{
     position: relative;
     left: -13px;
@@ -382,6 +388,10 @@ button:hover{
 
 .page-footer .wos:hover {
     mask: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("images/wallet-of-satoshi-icon.png");
+}
+
+.page-footer .monero:hover {
+    mask: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("images/monero-logo.png");
 }
 
 .page-footer .fa-twitter {
