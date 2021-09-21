@@ -1,12 +1,15 @@
 const navbar = document.createElement('template');
 navbar.innerHTML = `
       <nav class="flexbox">
-        <a href="/">Home</a>
-        <!-- <img src="images/flott-flyt.png" class="logo"> -->
+        <ul class="fullwidth">
+          <li><img src="images/my-github-logo.jpg" style="width: 30px", class="logo"></li>
+          <li><a href="/">Home</a></li>
+        </ul>
         <ul class="fullwidth">
           <li><a href="projects.html">Projects</a></li>
           <li><a href="studio.html">Studio</a></li>
           <li><a href="ralekkert.html">Rålekkert</a></li>
+          <!-- <li><a href="metaplex/index.html">NFT Store</a></li> -->
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
@@ -22,9 +25,9 @@ footer.innerHTML = `
     alt="Instagram"></a></li>
     <li><a href="https://www.linkedin.com/in/eirik-rolland-enger/"><i class="fa
     fa-linkedin"></i></a></li>
-    <li><a href="images/wallet-of-satoshi.png"><img class="wos"
+    <!-- <li><a href="images/wallet-of-satoshi.png"><img class="wos"
     style="max-height:16px;max-width:16px" src="images/wallet-of-satoshi-icon.png"
-    alt="Wallet of Satoshi"></a></li>
+    alt="Wallet of Satoshi"></a></li> -->
     <li><a href="images/monero-qr.png"><img class="monero"
     style="max-height:20px;max-width:20px" src="images/monero-logo.png"
     alt="Monero QR"></a></li>

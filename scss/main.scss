@@ -3,6 +3,7 @@ $linkPink: rgb(216, 29, 216);
 $linkVisited: #ff99aa;
 $linkPurple: rgb(98, 16, 250);
 $mygray: #505050;
+$mylightgray: #aaa;
 $mywhite: #ddd;
 $myblack: #1b1b1b;
 $codegreen: #206020;
@@ -20,7 +21,7 @@ body {
     margin: 0px;
     padding: 0px;
     min-height: 100vh;
-    background-color: $myblack;
+    background-color: #000;
     overflow-x: hidden;
 }
 
@@ -131,6 +132,51 @@ pre code {
     text-align: left;
 }
 
+// From https://stackoverflow.com/questions/11438910/how-to-display-items-side-by-side-without-using-tables
+.image-txt-container {
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 30px;
+  display:flex;
+  align-items:center;
+  flex-direction: row;
+  @media (max-width: 1000px){
+    flex-flow: column;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
+.image-txt-container h1 {
+    font-size: 50px;
+}
+.image-txt-container p {
+    font-size: 25px;
+    line-height: 1.4;
+}
+.txt-container {
+    margin-left: 20px;
+    width: 60%;
+}
+.image-txt-banner {
+  color: $mywhite;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  background-image: linear-gradient(#111, #000);
+  background-size: cover;
+}
+.image-txt-banner a{
+    color: $mylightgray;
+    text-decoration: none;
+}
+.image-txt-banner a:hover{
+    color: $mygray;
+}
+.image-txt-banner a:visited:hover{
+    color: $mygray;
+}
+
 // Banner
 .banner{
     width: 100%;
@@ -142,6 +188,7 @@ pre code {
     // Purple
     // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color3.webp");
     // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color4.webp");
+    // Green
     background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color5.webp");
     // Nahh
     // background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url("images/collatz_sea_weed_color6.webp");
@@ -262,6 +309,7 @@ nav.flexbox a:hover {
         font-size: 40px;
     }
 }
+
 // Button
 button{
     padding: 15px 0;
