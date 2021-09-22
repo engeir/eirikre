@@ -100,6 +100,7 @@ p code {
 }
 
 pre code {
+    overflow: scroll;
     border-radius: 10px;
     background-color: $verydarkgreen;
     border: 1px solid black;
@@ -131,40 +132,69 @@ pre code {
     display: inline-block;
     text-align: left;
 }
+.cover-info h5 {
+    position:relative;
+    line-height: 1.3;
+    left:20%;
+    text-align:right;
+    width:50vw;
+    @media (max-width: 600px){
+        width: 100%;
+        left: 2%;
+        right: 2%;
+        font-size: 15px;
+    }
+}
 
 // From https://stackoverflow.com/questions/11438910/how-to-display-items-side-by-side-without-using-tables
 .image-txt-container {
-  margin-left: 10%;
-  margin-right: 10%;
-  padding: 30px;
-  display:flex;
-  align-items:center;
-  flex-direction: row;
-  @media (max-width: 1000px){
-    flex-flow: column;
-    margin-left: 2%;
-    margin-right: 2%;
-  }
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 30px;
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    @media (max-width: 600px){
+        flex-flow: column;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
 }
 .image-txt-container h1 {
     font-size: 50px;
+    @media (max-width: 600px){
+        font-size: 25px;
+    }
 }
 .image-txt-container p {
-    font-size: 25px;
+    font-size: 20px;
     line-height: 1.4;
+    @media (max-width: 600px){
+        font-size: 15px;
+    }
+}
+.image-txt-container img {
+    width: 40%;
+    @media (max-width: 600px){
+        width: 100%;
+    }
 }
 .txt-container {
     margin-left: 20px;
+    margin-right: 20px;
     width: 60%;
+    @media (max-width: 600px){
+        width: 100%;
+    }
 }
 .image-txt-banner {
-  color: $mywhite;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  background-image: linear-gradient(#111, #000);
-  background-size: cover;
+    color: $mywhite;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background-image: linear-gradient(#111, #000);
+    background-size: cover;
 }
 .image-txt-banner a{
     color: $mylightgray;
@@ -174,6 +204,16 @@ pre code {
     color: $mygray;
 }
 .image-txt-banner a:visited:hover{
+    color: $mygray;
+}
+.image-txt-banner a code{
+    color: pink;
+    text-decoration: none;
+}
+.image-txt-banner a code:hover{
+    color: $myblack;
+}
+.image-txt-banner a code:visited:hover{
     color: $mygray;
 }
 
@@ -200,46 +240,37 @@ pre code {
 // navbar
 nav {
     padding: 10px;
-
     @media (min-width: 600px){
         padding: 20px;
     }
 }
-
 nav.flexbox {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-
     // Only space between if the width is large enough
     @media (min-width: 600px){
         justify-content: space-between;
     }
-
     ul {
         display: flex;
         align-items: center;
     }
-
     ul li {
         flex: 0 0 70px;
         margin-right: 10px;
         text-align: center;
-
         @media (min-width: 600px){
             flex: 0 0 auto;
             margin-right: 20px;
         }
-
         &:last-child {
             margin-right: 0px;
         }
     }
-
     > a {
         margin-bottom: 10px;
-
         @media (min-width: 600px){
             margin-bottom: 0px;
         }
@@ -248,12 +279,10 @@ nav.flexbox {
 ul.fullwidth {
     flex: 1 0 100%;
     justify-content: center;
-
     @media (min-width: 600px){
         flex: 0 1 auto;
     }
 }
-
 nav.flexbox a {
     position: relative;
     text-decoration: none;
@@ -264,7 +293,6 @@ nav.flexbox a {
     }
     color: $mywhite;
 }
-
 nav.flexbox a::before {
     content: "";
     position: absolute;
@@ -275,10 +303,8 @@ nav.flexbox a::before {
     left: 0px;
     background-color: $mygray;
 }
-
 nav.flexbox a:hover {
     // color: $linkPink;
-
     &::before {
         width:100%;
         // background: linear-gradient(to right, $linkPink 40%, $linkPurple 75%);
@@ -290,6 +316,9 @@ nav.flexbox a:hover {
     width: 100%;
     position: absolute;
     top: 40vh;
+    @media (max-width: 600px){
+        top: 60vh;
+    }
     // top: 35%;
     transform: translateY(-50%);
     text-align: center;
@@ -387,20 +416,16 @@ button:hover{
     position: fixed;
     bottom: 0;
 }
-
 .page-footer ul{
     align-items: center;
 }
-
 .page-footer ul li{
     display:inline-block;
     padding-bottom: 3px;
 }
-
 .page-footer .fa:hover {
     color: $mygray;
 }
-
 .page-footer .fa{
     padding: 0;
     width: 45px;
@@ -409,14 +434,12 @@ button:hover{
     line-height: 10px;
     color: $mywhite;
 }
-
 .page-footer img {
     border-radius: 3px;
 }
-
 .page-footer .monero{
     position: relative;
-    left: -5px;
+    left: -10px;
     // bottom: -3px;
 }
 .page-footer .wos{
@@ -429,29 +452,23 @@ button:hover{
     left: -13px;
     // bottom: -3px;
 }
-
 .page-footer .insta:hover {
     mask: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("images/instagram-logo.png");
 }
-
 .page-footer .wos:hover {
     mask: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("images/wallet-of-satoshi-icon.png");
 }
-
 .page-footer .monero:hover {
     mask: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url("images/monero-logo.png");
 }
-
 .page-footer .fa-twitter {
     position: relative;
     left: -5px;
     color: #55acee;
 }
-
 .page-footer .fa-linkedin {
     color: #0077b5;
 }
-
 .page-footer .fa-git-square {
     color: #f1502f;
 }

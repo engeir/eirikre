@@ -78,6 +78,7 @@ p code {
   overflow-wrap: anywhere; }
 
 pre code {
+  overflow: scroll;
   border-radius: 10px;
   background-color: #11221e;
   border: 1px solid black;
@@ -106,6 +107,19 @@ pre code {
   display: inline-block;
   text-align: left; }
 
+.cover-info h5 {
+  position: relative;
+  line-height: 1.3;
+  left: 20%;
+  text-align: right;
+  width: 50vw; }
+  @media (max-width: 600px) {
+    .cover-info h5 {
+      width: 100%;
+      left: 2%;
+      right: 2%;
+      font-size: 15px; } }
+
 .image-txt-container {
   margin-left: 10%;
   margin-right: 10%;
@@ -113,7 +127,7 @@ pre code {
   display: flex;
   align-items: center;
   flex-direction: row; }
-  @media (max-width: 1000px) {
+  @media (max-width: 600px) {
     .image-txt-container {
       flex-flow: column;
       margin-left: 2%;
@@ -121,14 +135,30 @@ pre code {
 
 .image-txt-container h1 {
   font-size: 50px; }
+  @media (max-width: 600px) {
+    .image-txt-container h1 {
+      font-size: 25px; } }
 
 .image-txt-container p {
-  font-size: 25px;
+  font-size: 20px;
   line-height: 1.4; }
+  @media (max-width: 600px) {
+    .image-txt-container p {
+      font-size: 15px; } }
+
+.image-txt-container img {
+  width: 40%; }
+  @media (max-width: 600px) {
+    .image-txt-container img {
+      width: 100%; } }
 
 .txt-container {
   margin-left: 20px;
+  margin-right: 20px;
   width: 60%; }
+  @media (max-width: 600px) {
+    .txt-container {
+      width: 100%; } }
 
 .image-txt-banner {
   color: #ddd;
@@ -147,6 +177,16 @@ pre code {
   color: #505050; }
 
 .image-txt-banner a:visited:hover {
+  color: #505050; }
+
+.image-txt-banner a code {
+  color: pink;
+  text-decoration: none; }
+
+.image-txt-banner a code:hover {
+  color: #1b1b1b; }
+
+.image-txt-banner a code:visited:hover {
   color: #505050; }
 
 .banner {
@@ -226,6 +266,9 @@ nav.flexbox a:hover::before {
   transform: translateY(-50%);
   text-align: center;
   color: #ddd; }
+  @media (max-width: 600px) {
+    .content {
+      top: 60vh; } }
 
 .content h1 {
   font-size: 70px;
@@ -330,7 +373,7 @@ button:hover {
 
 .page-footer .monero {
   position: relative;
-  left: -5px; }
+  left: -10px; }
 
 .page-footer .wos {
   position: relative;
