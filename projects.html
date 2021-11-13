@@ -33,10 +33,32 @@
             <div class="content">
                 <p>Some fun programming projects I've made over the years!</p>
                 <div>
+                    <button type="button"><span></span><a href="#nlf">Northern Lights Forecast</a></button>
                     <button type="button"><span></span><a href="#ncdump-rich">Rich NcDump</a></button>
                     <button type="button"><span></span><a href="#maths-snack">Maths Snack</a></button>
                     <button type="button"><span></span><a href="#remarkable-splashscreens">Remarkable Splashscreens</a></button>
                 </div>
+            </div>
+        </div>
+        <div class="image-txt-banner">
+            <div class="image-txt-container">
+                <div class="txt-container">
+                    <h1 id="nlf">Northern Lights Forecast <a href="https://github.com/engeir/northern-lights-forecast"><i class="fa fa-link"></i></a></h1>
+                    <p><strong>nlf — Norther Lights Forecast</strong> sends alerts
+                    to the telegram bot <code>@NorthernLightsForecastBot</code> whenever
+                    there are good chances of seeing northern lights near Tromsø. The
+                    program itself can actually check the conditions in a number of places
+                    (see the full list by running <code>nlf --locations</code>), but the
+                    instance I have running on a raspberry pi that updates telegram is
+                    looking only at Tromsø. Install and run your own version by cloning
+                    and installing with <code>poetry</code>:</p>
+                    <pre><code>git clone https://github.com/engeir/northern-lights-forecast.git
+poetry install
+# Install tesseract and create a telegram bot, then run
+nlf -l Tromsø</code></pre>
+                </div>
+                <img
+                src="images/nlf-telegram-crop.png">
             </div>
         </div>
         <div class="image-txt-banner">

@@ -78,6 +78,7 @@ p code {
   overflow-wrap: anywhere; }
 
 pre code {
+  font-size: 18px;
   overflow: scroll;
   border-radius: 10px;
   background-color: #11221e;
