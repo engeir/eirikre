@@ -1,0 +1,5 @@
+baseURL = 'http://flottflyt.com/'
+languageCode = 'en-gb'
+title = 'FlottFlyt'
+theme = "ananke"
+enableEmoji = true
