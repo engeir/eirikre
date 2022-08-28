@@ -111,3 +111,9 @@ Thumbs.db
 !.editorconfig
 !.phpcs.xml.dist
 !.env.example
+
+node_modules
+public
+resources
+.netlify
+.hugo_build.lock
