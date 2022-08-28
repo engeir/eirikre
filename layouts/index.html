@@ -1,0 +1,117 @@
+{{ define "main" }}
+<section class="section container-fluid mt-n3 pb-3">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+            <img src="./my-github-logo.jpg" alt="Square" class="border-0 rounded-circle">
+            <h1 class="mt-0">{{ .Title }}</h1>
+        </div>
+        <div class="col-lg-9 col-xl-8 text-center">
+            <p class="lead">{{ .Params.lead | safeHTML }}</p>
+            <!-- <a class="btn btn-primary btn-lg px-4 mb-2" -->
+            <!--     href="/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" -->
+            <!--     role="button">{{ i18n "get-started" }}</a> -->
+            <p class="meta">Open-source MIT Licensed. <a href="https://github.com/engeir/flottflyt">View the source code
+                    on GitHub</a>
+            </p>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+{{ if eq $.Site.Language.LanguageName "English" }}
+<section class="section section-sm" style="background-image: url('collatz_sea_weed_color1.webp')">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-5">
+                <h2 class="h4">Flott Flyt Foods</h2>
+                <p>Get inspired to cook something from my personal cookbook over at <a
+                        href="https://cookbook.flottflyt.com">FlottFlytFoods</a>.</p>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="h4">Flott Flyt Fotos</h2>
+                <p>Have a sneak peak into stuff I do in my little gallery at <a
+                        href="https://gallery.flottflyt.com">FlottFlytFotos</a>.</p>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="h4">Personal website</h2>
+                <p>I also keep a second website going at <a href="https://eirikenger.xyz">eirikenger.xyz</a> where I
+                    place stuff that relates more to my work.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-9">
+                <h2 class="h4">Projects</h2>
+                <p>Sometimes I do some programming in my free time, and sometimes they result in something that can be
+                    considered a finished product. You can find them in the <a href="/categories/projects/">Projects</a>
+                    cetegory!</p>
+            </div>
+        </div>
+    </div>
+    <!-- <section class="section section-featured mt-3 bg-light py-5"> -->
+    <div class="container">
+        <div class="section-featured mt-3 py-5">
+            <h2 class="h3 mt-0 text-center">Linktree</h2>
+            <div class="row justify-content-center mt-3 g-3">
+                <div class="col-sm-8 col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title my-2"><a
+                                    class="card-link stretched-link text-dark text-decoration-none"
+                                    href="https://github.com/engeir">GitHub</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title my-2"><a
+                                    class="card-link stretched-link text-dark text-decoration-none"
+                                    href="https://twitter.com/engereirik">Twitter</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title my-2"><a
+                                    class="card-link stretched-link text-dark text-decoration-none"
+                                    href="https://instagram.com/eirikre">Instagram</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title my-2"><a
+                                    class="card-link stretched-link text-dark text-decoration-none"
+                                    href="https://www.linkedin.com/in/eirik-rolland-enger/">LinkedIn</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-6 col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title my-2"><a
+                                    class="card-link stretched-link text-dark text-decoration-none"
+                                    href="https://www.youtube.com/watch?app=desktop&v=dQw4w9WgXcQ">OnlyFans</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </section> -->
+</section>
+{{ end }}
+{{ end }}
+
+{{ define "sidebar-footer" }}
+<!-- <section class="section section-sm container-fluid"> -->
+<!--     <div class="row justify-content-center text-center"> -->
+<!--         <div class="col-lg-9"> -->
+<!--             {{- .Content -}} -->
+<!--         </div> -->
+<!--     </div> -->
+<!-- </section> -->
+{{ end }}
