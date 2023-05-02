@@ -414,6 +414,10 @@ $navbar-dark-active-color:          $link-color-dark;
   background-image: radial-gradient($dots-dark 15%, transparent 15%);
 }
 
+[data-dark-mode] body .bg-collatz {
+  background-image: url('collatz_sea_weed_color1.webp');
+}
+
 [data-dark-mode] body .text-muted {
   color: darken($body-color-dark, 7.5%) !important;
 }

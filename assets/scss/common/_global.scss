@@ -251,6 +251,10 @@ body {
   margin-top: -12rem;
 }
 
+.bg-collatz {
+  background-image: url('collatz_sea_weed_salmon.webp');
+}
+
 // https://fossheim.io/writing/posts/css-text-gradient/
 .gradient-text {
   background-color: $primary;
