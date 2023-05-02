@@ -1,4 +1,4 @@
-baseurl = "https://flottflyt.com/"
+baseurl = "https://eirik.re/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
