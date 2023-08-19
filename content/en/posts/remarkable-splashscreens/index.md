@@ -12,7 +12,7 @@ weight: 50
 ---
 
 The **reMarkable Splashscreens**
-[:link:](https://remarkable-splashscreens.flottflyt.com/) repository is a collection of
+[:link:](https://remarkable-splashscreens.eirik.re/) repository is a collection of
 screen savers that I use for my reMarkable tablet. It looks a bit nicer than the quite
 boring screen savers that are there by default.
 

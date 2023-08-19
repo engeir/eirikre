@@ -11,7 +11,7 @@ title: "Maths Snack"
 weight: 50
 ---
 
-The **Maths Snack** [:link:](https://maths-snack.flottflyt.com/) repository is filled up
+The **Maths Snack** [:link:](https://maths-snack.eirik.re/) repository is filled up
 with anything that is interesting either visually or because of the mathematics, most
 often both.
 
