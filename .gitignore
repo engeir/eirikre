@@ -49,10 +49,6 @@
 .*
 ~*
 
-# My additions
-collatz*
-/metaplex
-
 # ignore node/grunt dependency directories
 node_modules/
 
