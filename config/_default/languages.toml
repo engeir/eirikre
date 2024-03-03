@@ -1,12 +1,12 @@
 [en]
-languageName = "English"
-contentDir = "content/en"
-weight = 10
-[en.params]
-languageISO = "EN"
-languageTag = "en-US"
-footer = 'Powered by :coffee: and Hugo, made by <a class=\"text-muted\" href=\"https://github.com/engeir\">@engeir</a>'
-alertText = 'Chat with my telegram bot about northern lights! <a class=\"alert-link stretched-link\" href=\"https://t.me/NorthernLightsForecastBot\">Visit @NorthernLightsForecastBot</a>'
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 10
+  [en.params]
+    languageISO = "EN"
+    languageTag = "en-GB"
+    footer = 'Powered by :coffee: and Hugo, made by <a class=\"text-muted\" href=\"https://github.com/engeir\">@engeir</a>'
+    alertText = 'Chat with my telegram bot about northern lights! <a class=\"alert-link stretched-link\" href=\"https://t.me/NorthernLightsForecastBot\">Visit @NorthernLightsForecastBot</a>'
 
 [nb]
 languageName = "Norsk"

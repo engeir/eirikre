@@ -1,4 +1,4 @@
-<div class="card rounded-0 border-0">
+<div class="card rounded-4 border-4">
   {{ $featured := partial "main/get-featured" . }}
   {{ if $featured -}}
     <a class="stretched-link text-white text-decoration-none" href="{{ .RelPermalink }}" >
@@ -6,7 +6,8 @@
       "page" .
       "src" $featured
       "alt" .Title
-      "class" "card-img img-fluid blur-up w-100 h-auto rounded-0"
+      "process" "fill 1600x900"
+      "class" "card-img img-fluid blur-up w-100 h-auto rounded-4"
       )}}
     </a>
   {{ end -}}

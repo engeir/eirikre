@@ -5,7 +5,7 @@ date: 2022-07-16T22:28:16-06:00
 description: "Kommandolinjeprogram som varsler om pågående nordly-hendelser, med støtte for telegram-bot"
 excerpt: "CLI tool to be notified about northern light events, with support for a telegram bot"
 images: ["northern-lights.JPG"]
-lastmod: 2024-01-05T00:08:29+0100
+lastmod: 2024-01-04T23:41:42+0100
 lead: "Kommandolinjeprogram som varsler om pågående nordly-hendelser, med støtte for telegram-bot"
 tags: [CLI, python, raspberry-pi]
 title: "Northern Lights Forecast"
@@ -35,4 +35,4 @@ nlf -l Tromsø
 
 {{< callout context="note" title="Note" icon="qrcode" >}} Scan the QR code to get directly to the telegram bot! {{< /callout >}}
 
-{{< figure src="nlf-bot.jpg" fillImage="778x660 jpg" >}}
+{{< img src="nlf-bot.jpg" fillImage="778x660 jpg" >}}
