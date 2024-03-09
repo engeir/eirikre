@@ -1,0 +1,25 @@
+[tools]
+node = "latest"
+
+[tasks.update]
+description = "Update Doks"
+run = "npm install @hyas/doks-core@latest"
+
+[tasks.install]
+description = "Install all packages"
+run = "npm install"
+
+[tasks.dev]
+description = "Run the development server"
+run = "npm run dev"
+
+[tasks.build]
+description = "Build the static website"
+run = "npm run build"
+sources = ["package.json", "content/**", "assets/**", "layouts/**", "config/**"] # skip running if these files haven't changed
+outputs = ["public/**"]
+
+[tasks.publish]
+description = "Publish the site to my server with rsync"
+run = "rsync -rtvzP --delete ~/projects/flottflyt/public/ root@eirik.re:/var/www/flottflyt"
+depends = ["build"]

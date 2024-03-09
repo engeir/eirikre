@@ -107,6 +107,7 @@ Thumbs.db
 !.editorconfig
 !.phpcs.xml.dist
 !.env.example
+!.mise.toml
 
 node_modules
 public
