@@ -6,7 +6,7 @@ description: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 excerpt: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 homepage: true
 images: ['nnn-demo.png']
-lastmod: 2020-11-04T09:19:42+01:00
+lastmod: 2024-05-12T11:51:31+0200
 lead: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 link: "https://ncdump-rich.readthedocs.io/"
 pinned: true
@@ -17,7 +17,7 @@ weight: 50
 
 <!-- # Rich NcDump  -->
 
-**Rich NcDump** er et repository laget for å raskt kunne forhåndsvise `netCDF` filer.
+**Rich NcDump** er et lager laget for å raskt kunne forhåndsvise `netCDF` filer.
 Spesielt nyttig når man kun ønsker informasjon om metadataen, og tilgjengelig via `pip`!
 
 For å installere:
