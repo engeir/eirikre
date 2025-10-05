@@ -1,215 +1,94 @@
 {{ define "main" }}
-{{ if eq $.Site.Language.LanguageName "English" }}
-<section class="section container-fluid mt-n3 pb-3">
-    <div class="row justify-content-center">
-        <div class="col-lg-12 text-center">
-            <img src="{{ "my-github-logo.jpg" | relURL }}" alt="Square" class="border-0 rounded-circle">
-            <h1 class="mt-0">{{ .Title }}</h1>
-        </div>
-        <div class="col-lg-9 col-xl-8 text-center">
-            <p class="lead">{{ .Params.lead | safeHTML }}</p>
-            <!-- <a class="btn btn-primary btn-lg px-4 mb-2" -->
-            <!--     href="/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" -->
-            <!--     role="button">{{ i18n "get-started" }}</a> -->
-            <p class="meta">Open-source MIT Licensed. <a href="https://github.com/engeir/eirikre">View the source code
-                    on GitHub</a>
-            </p>
-        </div>
-    </div>
-</section>
-{{ end }}
-{{ if eq $.Site.Language.LanguageName "Norsk" }}
-<section class="section container-fluid mt-n3 pb-3">
-    <div class="row justify-content-center">
-        <div class="col-lg-12 text-center">
-            <img src="{{ "my-github-logo.jpg" | relURL }}" alt="Square" class="border-0 rounded-circle">
-            <h1 class="mt-0">{{ .Title }}</h1>
-        </div>
-        <div class="col-lg-9 col-xl-8 text-center">
-            <p class="lead">{{ .Params.lead | safeHTML }}</p>
-            <!-- <a class="btn btn-primary btn-lg px-4 mb-2" -->
-            <!--     href="/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" -->
-            <!--     role="button">{{ i18n "get-started" }}</a> -->
-            <p class="meta">Åpen og MIT lisensert kode. <a href="https://github.com/engeir/eirikre">Se kildekoden
-                    på GitHub</a>
-            </p>
-        </div>
-    </div>
-</section>
-{{ end }}
 {{ end }}
 
 {{ define "sidebar-prefooter" }}
-{{ if eq $.Site.Language.LanguageName "English" }}
-<section class="section section-sm bg-collatz" >
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-5">
-                <h2 class="h4">Mere?</h2>
-                <p>Get inspired to cook something from my personal cookbook over at <a
-                        href="https://mere.eirik.re">Mere?</a>.</p>
-            </div>
-            <div class="col-lg-5">
-                <h2 class="h4">Photo Gallery</h2>
-                <p>Have a sneak peak into some stuff I do in my little gallery at <a
-                        href="https://gallery.eirik.re">gallery.eirik.re</a>.</p>
-            </div>
-            <div class="col-lg-5">
-                <h2 class="h4">Personal website</h2>
-                <p>I also keep a second website going at <a href="https://eirikenger.xyz">eirikenger.xyz</a> where I
-                    place stuff that relates more to my work.</p>
+<section style="position: relative; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); margin-top: -6rem; padding-top: 6rem; padding-bottom: 3rem; overflow: hidden;">
+    <!-- Background with blur -->
+    <div class="bg-collatz" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; filter: blur(3px); z-index: 0;"></div>
+
+    <!-- Overlay for better contrast -->
+    <div class="bg-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;"></div>
+
+    <!-- Content -->
+    <div style="position: relative; z-index: 2;">
+        <!-- Profile Section -->
+        <div class="pb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <img src="{{ "my-github-logo.jpg" | relURL }}" alt="Profile" class="border-0 rounded-circle mb-4" style="max-width: 150px;">
+                    <h1 class="mt-0">{{ .Title }}</h1>
+                    <p class="lead">{{ .Params.lead | safeHTML }}</p>
+                </div>
             </div>
         </div>
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-9">
-                <h2 class="h4">Projects</h2>
-                <p>Sometimes I do some programming in my free time, and sometimes they result in something that can be
-                    considered a finished product. You can find them in the <a href="/categories/projects/">Projects</a>
-                    cetegory!</p>
+
+        <!-- Terminal Window -->
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="terminal-window" style="border-radius: 8px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); padding: 1.5rem; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;">
+                        <!-- Terminal content -->
+                        <div style="font-size: 0.9rem; line-height: 1.7;">
+                            {{ if eq $.Site.Language.LanguageName "English" }}
+                            <div style="margin-bottom: 1.2rem;">
+                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info links/</div>
+                                <div style="margin-top: 0.4rem; font-family: monospace;">
+                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Name</div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">code & repos</span> <a href="https://github.com/engeir" class="terminal-link" style="text-decoration: none;">github</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">toots & thoughts</span> <a href="https://mastodon.social/@eirikre" rel="me" class="terminal-link" style="text-decoration: none;">mastodon</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">skeets & posts</span> <a href="https://bsky.app/profile/eirik.re" class="terminal-link" style="text-decoration: none;">bluesky</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">pics & pixels</span> <a href="https://pixelfed.social/eirikre" class="terminal-link" style="text-decoration: none;">pixelfed</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">professional stuff</span> <a href="https://www.linkedin.com/in/eirik-rolland-enger/" class="terminal-link" style="text-decoration: none;">linkedin</a></div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 1.2rem;">
+                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info projects/</div>
+                                <div style="margin-top: 0.4rem; font-family: monospace;">
+                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Name</div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personal cookbook</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">photo collection</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">hobby coding</span> <a href="/categories/projects/" class="terminal-link" style="text-decoration: none;">projects/</a></div>
+                                </div>
+                            </div>
+
+                            <div class="terminal-prompt">
+                                <span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor" style="display: inline-block; width: 8px; height: 1em; margin-left: 2px; animation: blink 1s step-end infinite;"></span>
+                            </div>
+                            {{ else }}
+                            <div style="margin-bottom: 1.2rem;">
+                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info lenker/</div>
+                                <div style="margin-top: 0.4rem; font-family: monospace;">
+                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Navn</div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">kode & repos</span> <a href="https://github.com/engeir" class="terminal-link" style="text-decoration: none;">github</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">tuter & tanker</span> <a href="https://mastodon.social/@eirikre" rel="me" class="terminal-link" style="text-decoration: none;">mastodon</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">poster & innlegg</span> <a href="https://bsky.app/profile/eirik.re" class="terminal-link" style="text-decoration: none;">bluesky</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">bilder & piksler</span> <a href="https://pixelfed.social/eirikre" class="terminal-link" style="text-decoration: none;">pixelfed</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">profesjonelt</span> <a href="https://www.linkedin.com/in/eirik-rolland-enger/" class="terminal-link" style="text-decoration: none;">linkedin</a></div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 1.2rem;">
+                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info prosjekter/</div>
+                                <div style="margin-top: 0.4rem; font-family: monospace;">
+                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Navn</div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personlig kokebok</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">fotosamling</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">hobbykoding</span> <a href="/nb/categories/projects/" class="terminal-link" style="text-decoration: none;">prosjekter/</a></div>
+                                </div>
+                            </div>
+
+                            <div class="terminal-prompt">
+                                <span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor" style="display: inline-block; width: 8px; height: 1em; margin-left: 2px; animation: blink 1s step-end infinite;"></span>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- <section class="section section-featured mt-3 bg-light py-5"> -->
-    <div class="container">
-        <div class="section-featured mt-3 py-5">
-            <h2 class="h2 mt-0 text-center">Linktree</h2>
-            <div class="row justify-content-center g-3">
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://github.com/engeir">GitHub</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://mastodon.social/@eirikre" rel="me">Mastodon</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://bsky.app/profile/eirik.re">Bluesky</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://www.linkedin.com/in/eirik-rolland-enger/">LinkedIn</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://www.youtube.com/watch?app=desktop&v=dQw4w9WgXcQ">OnlyFans</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- </section> -->
 </section>
-{{ end }}
-{{ if eq $.Site.Language.LanguageName "Norsk" }}
-<section class="section section-sm bg-collatz" >
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-5">
-                <h2 class="h4">Mere?</h2>
-                <p>La deg inspirere til å lage noe godt fra kokeboken mine over på <a
-                        href="https://mere.eirik.re">Mere?</a>.</p>
-            </div>
-            <div class="col-lg-5">
-                <h2 class="h4">Photo Gallery</h2>
-                <p>Ta en sniktitt på noe av det jeg holder på med fra bilder jeg legger ut på <a
-                        href="https://gallery.eirik.re">gallery.eirik.re</a>.</p>
-            </div>
-            <div class="col-lg-5">
-                <h2 class="h4">Personal website</h2>
-                <p>Jeg har også en annen nettside på <a href="https://eirikenger.xyz">eirikenger.xyz</a> hvor jeg
-                    legger greier mer relatert til jobben.</p>
-            </div>
-        </div>
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-9">
-                <h2 class="h4">Projects</h2>
-                <p>Noen ganger programmerer jeg for rekreasjon, og noen ganger resulterer det i noe som kan anses som
-                    et ferdig produkt. Du finner de i <a href="/categories/projects/">Prosjekt</a>
-                    kategorien!</p>
-            </div>
-        </div>
-    </div>
-    <!-- <section class="section section-featured mt-3 bg-light py-5"> -->
-    <div class="container">
-        <div class="section-featured mt-3 py-5">
-            <h2 class="h2 mt-0 text-center">Lenketre</h2>
-            <div class="row justify-content-center g-3">
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://github.com/engeir">GitHub</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://mastodon.social/@eirikre" rel="me">Mastodon</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://bsky.app/profile/eirik.re">Bluesky</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://www.linkedin.com/in/eirik-rolland-enger/">LinkedIn</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8 col-md-6 col-xl-3">
-                    <div class="card h-10">
-                        <div class="card-body">
-                            <h3 class="h4 card-title my-2 text-center"><a
-                                    class="card-link stretched-link text-dark text-decoration-none"
-                                    href="https://www.youtube.com/watch?app=desktop&v=dQw4w9WgXcQ">OnlyFans</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- </section> -->
-</section>
-{{ end }}
 {{ end }}
 
 {{ define "sidebar-footer" }}

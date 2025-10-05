@@ -1,12 +1,107 @@
 // Put your custom SCSS code here
 
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.terminal-window {
+  background: rgba(250, 250, 250, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #2d2d2d;
+}
+
+.terminal-prompt {
+  color: #0066cc;
+}
+
+.terminal-user {
+  color: #2d8b57;
+}
+
+.terminal-path {
+  color: #0066cc;
+}
+
+.terminal-link {
+  color: #0066cc;
+}
+
+.terminal-info {
+  color: #666;
+}
+
+.terminal-header {
+  color: #666;
+}
+
+.terminal-cursor {
+  background: #0066cc;
+}
+
+@include color-mode(dark) {
+  .terminal-window {
+    background: rgba(20, 20, 20, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e0e0e0;
+  }
+
+  .terminal-prompt {
+    color: #5f87af;
+  }
+
+  .terminal-user {
+    color: #87af5f;
+  }
+
+  .terminal-path {
+    color: #5f87d7;
+  }
+
+  .terminal-link {
+    color: #5fd7ff;
+  }
+
+  .terminal-info {
+    color: #aaa;
+  }
+
+  .terminal-header {
+    color: #888;
+  }
+
+  .terminal-cursor {
+    background: #87d7ff;
+  }
+}
+
 .bg-collatz {
   background-image: url("https://raw.githubusercontent.com/engeir/eirikre/387af38b7e8738f946ca666220649858d5bcf462/static/collatz_sea_weed_salmon.webp");
+  background-size: cover;
+  background-position: 35% center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-overlay {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 @include color-mode(dark) {
   .bg-collatz {
     background-image: url("https://raw.githubusercontent.com/engeir/eirikre/387af38b7e8738f946ca666220649858d5bcf462/static/collatz_sea_weed_color1.webp");
+    background-size: cover;
+    background-position: 35% center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .bg-overlay {
+    background: rgba(0, 0, 0, 0.4);
   }
 }
 
