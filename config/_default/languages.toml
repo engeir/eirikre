@@ -5,8 +5,8 @@
   [en.params]
     languageISO = "EN"
     languageTag = "en-GB"
-    footer = 'Powered by :coffee: and Hugo, made by <a class=\"text-muted\" href=\"https://github.com/engeir\">@engeir</a>'
-    alertText = 'Chat with my telegram bot about northern lights! <a class=\"alert-link stretched-link\" href=\"https://t.me/NorthernLightsForecastBot\">Visit @NorthernLightsForecastBot</a>'
+    footer = 'Powered by :coffee: and <a class=\"text-muted\" href="https://gohugo.io/">Hugo</a>, made by <a class=\"text-muted\" href="https://github.com/engeir">@engeir</a>'
+    alertText = 'Chat with my telegram bot about northern lights! <a class=\"alert-link stretched-link\" href="https://t.me/NorthernLightsForecastBot">Visit @NorthernLightsForecastBot</a>'
 
 [nb]
 languageName = "Norsk"
@@ -15,5 +15,5 @@ weight = 15
 [nb.params]
 languageISO = "NB"
 languageTag = "nb-NB"
-footer = 'Drevet av :coffee: og <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, laget av <a class=\"text-muted\" href=\"https://github.com/engeir\">@engeir</a>'
-alertText = 'Chat med min telegram bot om nordlys! <a class=\"alert-link stretched-link\" href=\"https://t.me/NorthernLightsForecastBot\">Besøk @NorthernLightsForecastBot</a>'
+footer = 'Drevet av :coffee: og <a class=\"text-muted\" href="https://gohugo.io/">Hugo</a>, laget av <a class=\"text-muted\" href="https://github.com/engeir">@engeir</a>'
+alertText = 'Chat med min telegram bot om nordlys! <a class=\"alert-link stretched-link\" href="https://t.me/NorthernLightsForecastBot">Besøk @NorthernLightsForecastBot</a>'
