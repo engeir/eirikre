@@ -1,12 +1,12 @@
 // Put your custom SCSS code here
 
 .bg-collatz {
-  background-image: url("https://raw.githubusercontent.com/engeir/flottflyt/387af38b7e8738f946ca666220649858d5bcf462/static/collatz_sea_weed_salmon.webp");
+  background-image: url("https://raw.githubusercontent.com/engeir/eirikre/387af38b7e8738f946ca666220649858d5bcf462/static/collatz_sea_weed_salmon.webp");
 }
 
 @include color-mode(dark) {
   .bg-collatz {
-    background-image: url("https://raw.githubusercontent.com/engeir/flottflyt/387af38b7e8738f946ca666220649858d5bcf462/static/collatz_sea_weed_color1.webp");
+    background-image: url("https://raw.githubusercontent.com/engeir/eirikre/387af38b7e8738f946ca666220649858d5bcf462/static/collatz_sea_weed_color1.webp");
   }
 }
 

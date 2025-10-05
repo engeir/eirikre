@@ -1,5 +1,6 @@
 [tools]
 node = "latest"
+usage = "latest"
 
 [tasks.update]
 description = "Update Doks"
@@ -21,5 +22,5 @@ outputs = ["public/**"]
 
 [tasks.publish]
 description = "Publish the site to my server with rsync"
-run = "rsync -rtvzP --delete ~/projects/flottflyt/public/ root@eirik.re:/var/www/flottflyt"
+run = "rsync -rtvzP --delete ~/projects/eirikre/public/ root@eirik.re:/var/www/flottflyt"
 depends = ["build"]
