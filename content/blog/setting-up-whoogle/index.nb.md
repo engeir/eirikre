@@ -1,10 +1,10 @@
 ---
-title: "Vær din egen vert av Whoogle via docker"
+title: "Selvbetjen Whoogle via docker"
 description: "Sett opp din egen Whoogle søkemotor på en Nginx server"
 excerpt: "Sett opp din egen Whoogle søkemotor på en Nginx server"
 lead: "Sett opp din egen Whoogle søkemotor på en Nginx server"
 date: 2023-08-19T22:35:06+02:00
-lastmod: 2023-12-31T12:45:22+0100
+lastmod: 2025-10-05T17:22:51+0200
 draft: false
 weight: 50
 images: ["whoogle.png"]
@@ -15,39 +15,37 @@ pinned: false
 homepage: false
 ---
 
-For some time I have been hosting my own website and a few subdomains on a server I rent
-via [Vultr](https://www.vultr.com/), but all of it have been placed directly in
-directories on the server itself. It's all just been built sites lying there, with
-access to the internet via the domain I own.
+I en periode har jeg betjent min egen nettside og noen subdomener på en server jeg leier
+via [Vultr](https://www.vultr.com/), men alt har ligget direkte i mapper på serveren.
+Det har bare vært ferdige nettsider som ligger der, tilgjengelige via domenet jeg eier.
 
-But that ends today, as I am now running my own version of the
-[Whoogle](https://github.com/benbusby/whoogle-search) search engine on my server via
-docker, that I can access from anywhere as the subdomain
-[whoogle.eirik.re](https://whoogle.eirik.re).
+Men det er slutt på det nå, for jeg kjører nå min egen versjon av søkemotoren
+[Whoogle](https://github.com/benbusby/whoogle-search) på serveren via docker, som jeg
+kan nå fra hvor som helst via subdomenet [whoogle.eirik.re](https://whoogle.eirik.re).
 
 ## Whoogle
 
-Whoogle is a nice open source project that is "a self-hosted, ad-free,
-privacy-respecting metasearch engine". It can be installed in a number of ways: from
-source, via [PyPI](https://pypi.org) or via docker, to name a few.
+Whoogle er et fint åpen kildekode-prosjekt som er "en selvbetjent, reklamefri,
+personvernrespekterende meta-søkemotor". Den kan installeres på flere måter: fra
+kildekode, via [PyPI](https://pypi.org) eller via docker, for å nevne noen.
 
-Running it on my computers via docker and accessing it on
-[`http://localhost:5000`](http://localhost:5000) has been my go-to way for a long time,
-but that leaves my phone out of the fun, so this is the attempt to have a complete
-set-up for all my devices at once.
+Å kjøre den på datamaskinene mine via docker og få tilgang til den på
+[`http://localhost:5000`](http://localhost:5000) har vært min foretrukne løsning lenge,
+men da blir telefonen min stående på sidelinjen. Dette er derfor et forsøk på å få et
+komplett oppsett for alle enhetene mine samtidig.
 
 ### Dockerize env
 
-Before setting up the docker image, let us first figure out how we can easily configure
-this via environment variables. [Whoogle support many of
-them](https://github.com/benbusby/whoogle-search#environment-variables), so it's good to
-know how to deal with that right away.
+Før vi setter opp docker-imaget, la oss først finne ut hvordan vi enkelt kan konfigurere
+dette via miljøvariabler.
+[Whoogle støtter mange av dem](https://github.com/benbusby/whoogle-search#environment-variables),
+så det er greit å vite hvordan man håndterer det med en gang.
 
-One issue is when setting the colour theme, which spans many lines, since [docker cannot
-pass newlines from variables in `--env-file`
-files](https://github.com/moby/moby/issues/12997). We solve this with a handy little
-script called [dockerize-env](https://gist.github.com/hudon/149466af21dfc52fdc70). It's
-described how to use it in the script, but in short, you define all variables in `.env`:
+Ett problem er når man setter fargetemaet, som strekker seg over flere linjer, siden
+[docker ikke kan sende linjeskift fra variabler i `--env-file` filer](https://github.com/moby/moby/issues/12997).
+Vi løser dette med et praktisk lite skript kalt
+[dockerize-env](https://gist.github.com/hudon/149466af21dfc52fdc70). Det er beskrevet
+hvordan man bruker det i skriptet, men kort sagt, du definerer alle variabler i `.env`:
 
 ```env {title=".env"}
 WHOOGLE_CONFIG_LANGUAGE=lang_no
@@ -57,46 +55,47 @@ WHOOGLE_CONFIG_DARK=1
 WHOOGLE_CONFIG_GET_ONLY=1
 ```
 
-Then you run
+Deretter kjører du
 
-```bash {title="Creating variables for a dummy container named 'my_container'"}
+```bash {title="Lager variabler for en dummy container kalt 'my_container'"}
 dockerize-env .env
 source .env.exported && docker run --env-file .env.vars <my_container>
 ```
 
 ### Docker
 
-So what is the container we are running? The image is called `benbusby/whoogle-search`,
-so we first pull it down with
+Så hva er containeren vi kjører? Imaget heter `benbusby/whoogle-search`, så vi laster
+det først ned med
 
-```bash {title="Pull down the docker image"}
+```bash {title="Last ned docker-imaget"}
 docker pull benbusby/whoogle-search
 ```
 
-before we fix our environment variables and start the container:
+før vi fikser miljøvariablene våre og starter containeren:
 
-```bash {title="Create variables and run the whoogle container"}
+```bash {title="Lag variabler og kjør whoogle-containeren"}
 dockerize-env .env
 source .env.exported && docker run --publish 5000:5000 --detach --env-file .env.vars --name whoogle-search benbusby/whoogle-search:latest
 ```
 
-At this point, a whoogle search should be available at
+På dette tidspunktet skal whoogle være tilgjengelig på
 [`http://localhost:5000`](http://localhost:5000)!
 
-## Self-hosting
+## Selvbetjening
 
-The tricky part for me was to understand how I would take this to my server where I am
-running [Nginx](https://nginx.org/en/) as a reverse proxy server with https
-using [certbot](https://certbot.eff.org/), when I am not just pointing to local files,
-but are running software in a container. Suddenly you have to deal with the IP address
-of the container and different ports that the image expects.
+Den vanskelige delen for meg var å forstå hvordan jeg skulle ta dette til serveren min
+hvor jeg kjører [Nginx](https://nginx.org/en/) som en reverse proxy-server med https ved
+hjelp av [certbot](https://certbot.eff.org/), når jeg ikke bare peker til lokale filer,
+men kjører programvare i en container. Plutselig må du håndtere IP-adressen til
+containeren og forskjellige porter som imaget forventer.
 
-### Nginx and setting up a website
+### Nginx og oppsett av en nettside
 
-I first got started with my website by following along the guide at
-[landchad.net](https://landchad.net), which is why I'm using Vultr and Nginx (and
-[Epik](https://www.epik.com/)) in the first place. This also means that my static site
-at [eirik.re](https://eirik.re) is configured via a file in `/etc/nginx/sites-available/` as
+Jeg startet først med nettsiden min ved å følge guiden på
+[landchad.net](https://landchad.net), som er grunnen til at jeg bruker Vultr og Nginx
+(og [Epik](https://www.epik.com/)) i utgangspunktet. Dette betyr også at den statiske
+siden min på [eirik.re](https://eirik.re) er konfigurert via en fil i
+`/etc/nginx/sites-available/` som
 
 ```nginx {title="/etc/nginx/sites-available/eirikre"}
 server {
@@ -111,27 +110,27 @@ server {
 }
 ```
 
-So, what do we need to adjust in this to have a new file for our whoogle subdomain?
+Så, hva må vi justere i dette for å ha en ny fil for whoogle-subdomenet vårt?
 
-### Putting it all together
+### Sette det hele sammen
 
-From the domain registrars point of view, I didn't need to do anything. Following the
-[landchad.net](https://landchad.net) guide will make us redirect all subdomains to
-nginx, and if they are not configured, show us the default error message:
+Fra domeneregistratorens perspektiv trengte jeg ikke å gjøre noe. Ved å følge
+[landchad.net](https://landchad.net)-guiden vil vi omdirigere alle subdomener til nginx,
+og hvis de ikke er konfigurert, vises standardfeilmeldingen:
 
-{{< figure caption="Page shown when visiting whoogle.eirik.re before updating the nginx settings" src="welcome-to-nginx.jpg" >}}
+{{< figure caption="Side som vises når man besøker whoogle.eirik.re før oppdatering av nginx-innstillingene" src="welcome-to-nginx.jpg" >}}
 
-> You can see a live example by visiting any subdomain that is not yet configured, for
-> example [no-subdomain-here.eirik.re](http://no-subdomain-here.eirik.re).
+> Du kan se et levende eksempel ved å besøke et subdomene som ikke er konfigurert ennå,
+> for eksempel [no-subdomain-here.eirik.re](http://no-subdomain-here.eirik.re).
 
-Therefore, after running the commands from before, but this time on my server
+Derfor, etter å ha kjørt kommandoene fra før, men denne gangen på serveren min
 
 ```bash
 dockerize-env .env
 source .env.exported && docker run --publish 5000:5000 --detach --env-file .env.vars --name whoogle-search benbusby/whoogle-search:latest
 ```
 
-I checked which IP address the docker container was using:
+sjekket jeg hvilken IP-adresse docker-containeren brukte:
 
 ```console
 $ ip a
@@ -145,12 +144,13 @@ $ ip a
 ...
 ```
 
-The `ip a` command gives a lot of output, but you can find docker listed there, and
-after `inet` on the second line of the docker block, we find the IP address as
-`172.17.0.1`! From the Whoogle README we actually do get an [Nginx configuration
-file](https://github.com/benbusby/whoogle-search#nginx) that "works", but having the
-actual IP address was crucial to get `certbot` to accept it. So we make a tiny change to
-the config file, so that it now reads
+Kommandoen `ip a` gir mye output, men du kan finne docker oppført der, og etter `inet`
+på den andre linjen i docker-blokken, finner vi IP-adressen som `172.17.0.1`! Fra
+Whoogle README får vi faktisk en
+[Nginx konfigurasjonsfil](https://github.com/benbusby/whoogle-search#nginx) som
+"virker", men å ha den faktiske IP-adressen var avgjørende for å få `certbot` til å
+akseptere den. Så vi gjør en liten endring på konfigurasjonsfilen, slik at den nå ser
+slik ut
 
 ```nginx {title="/etc/nginx/sites-available/whoogle"}
 server {
@@ -170,41 +170,41 @@ server {
 }
 ```
 
-The important change here is that instead of using `localhost`, we use the IP of our
-docker container. (I also tried to use both `proxy_pass` variables, but that doesn't
-work. You can only have one `proxy_pass` variable.) We then save this to
-`/etc/nginx/sites-available/whoogle` and symlink it to `sites-enabled` with
+Den viktige endringen her er at i stedet for å bruke `localhost`, bruker vi IP-en til
+docker-containeren vår. (Jeg prøvde også å bruke begge `proxy_pass`-variablene, men det
+fungerer ikke. Du kan bare ha én `proxy_pass`-variabel.) Vi lagrer deretter dette til
+`/etc/nginx/sites-available/whoogle` og symlinker det til `sites-enabled` med
 
-```bash {title="Link the site to enablabed sites"}
+```bash {title="Lenk siden til aktiverte sider"}
 ln -s /etc/nginx/sites-available/whoogle /etc/nginx/sites-enabled/
 ```
 
-Let us now restart Nginx so that it is aware of our new site
+La oss nå starte Nginx på nytt slik at den er klar over den nye siden vår
 
-```bash {title="Reload nginx"}
+```bash {title="Last inn nginx på nytt"}
 systemctl reload nginx
 ```
 
-and then run `certbot` to get our certificates and make the site use https
+og deretter kjøre `certbot` for å få sertifikatene våre og få siden til å bruke https
 
-```bash {title="Create certificates for whoogle.eirik.re"}
+```bash {title="Lag sertifikater for whoogle.eirik.re"}
 certbot --nginx
 ```
 
-Let us spectate the greate success!
+La oss nå beundre den store suksessen!
 
-{{< figure caption="Whoogle on desktop!" src="whoogle-desktop.jpg" alt="Whoogle on desktop!" >}}
+{{< figure caption="Whoogle på desktop!" src="whoogle-desktop.jpg" alt="Whoogle på desktop!" >}}
 
-{{< figure caption="Whoogle on mobile!" src="whoogle-mobile.jpg" alt="Whoogle on mobile!" >}}
+{{< figure caption="Whoogle på mobil!" src="whoogle-mobile.jpg" alt="Whoogle på mobil!" >}}
 
-## Resources
+## Ressurser
 
-To get it all working, some guides were particularly useful, other than what I have
-linked to throughout the post so far. This guide on the [nginx reverse
-proxy](https://www.techaddressed.com/tutorials/basic-nginx-reverse-proxy/) is super
-useful to understand what should go in the Nginx configuration file, and then the same
-site has a guide on how to [set up whoogle search with
-docker](https://www.techaddressed.com/tutorials/setup-whoogle-search-docker/). Still,
-the maybe most useful to me was to watch [this guy do this exact
-thing](https://www.youtube.com/watch?v=aq3mZrDbbYQ), but using GUIs instead of the
-command line.
+For å få alt til å fungere, var noen guider spesielt nyttige, utover det jeg har lenket
+til gjennom innlegget så langt. Denne guiden om
+[nginx reverse proxy](https://www.techaddressed.com/tutorials/basic-nginx-reverse-proxy/)
+er super nyttig for å forstå hva som skal være i Nginx-konfigurasjonsfilen, og deretter
+har samme nettsted en guide om hvordan man
+[setter opp whoogle search med docker](https://www.techaddressed.com/tutorials/setup-whoogle-search-docker/).
+Likevel, det mest nyttige for meg var kanskje å se
+[denne fyren gjøre akkurat dette](https://www.youtube.com/watch?v=aq3mZrDbbYQ), men ved
+å bruke GUI-er i stedet for kommandolinjen.
