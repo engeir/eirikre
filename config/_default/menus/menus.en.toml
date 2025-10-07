@@ -1,12 +1,17 @@
 [[main]]
-name = "Posts"
-url = "/posts/"
+name = "Blog"
+url = "/blog/"
 weight = 10
 
 [[main]]
-name = "Blog"
-url = "/blog/"
+name = "Posts"
+url = "/posts/"
 weight = 20
+
+[[main]]
+name = "Work"
+url = "/work/"
+weight = 25
 
 [[main]]
 name = "Tags"
@@ -44,31 +49,26 @@ url = "https://www.linkedin.com/in/eirik-rolland-enger/"
 weight = 40
 
 [[sidebar_posts]]
-  name = "Maths Snack"
-  pageRef = "/posts/maths-snack"
-  weight = 10
+name = "Maths Snack"
+pageRef = "/posts/maths-snack"
+weight = 10
 
 [[sidebar_posts]]
-  name = "Northern Lights Forecast"
-  pageRef = "/posts/northern-lights-forecast"
-  weight = 20
+name = "Northern Lights Forecast"
+pageRef = "/posts/northern-lights-forecast"
+weight = 20
 
 [[sidebar_posts]]
-  name = "Remarkable Splashscreens"
-  pageRef = "/posts/remarkable-splashscreens"
-  weight = 30
+name = "Remarkable Splashscreens"
+pageRef = "/posts/remarkable-splashscreens"
+weight = 30
 
 [[sidebar_posts]]
-  name = "Rich NcDump"
-  pageRef = "/posts/ncdump-rich"
-  weight = 40
+name = "Rich NcDump"
+pageRef = "/posts/rich-ncdump"
+weight = 40
 
 [[footer]]
 name = "Source code"
 url = "https://github.com/engeir/eirikre"
 weight = 10
-
-# [[footer]]
-#   name = "Terms of Service"
-#   url = "/terms/"
-#   weight = 20

@@ -4,11 +4,11 @@ contributors: ["Eirik Rolland Enger"]
 date: 2022-07-16T22:27:04-06:00
 description: "Elegante skjermsparere designet for reMarkable papir-tablet"
 images: ["remarkable-splashscreens.png"]
-lastmod: 2024-05-12T11:50:50+0200
+lastmod: 2025-10-07T20:49:05+0200
 lead: "Elegante skjermsparere designet for reMarkable papir-tablet"
 tags: [python, remarkable]
 title: "reMarkable Splashscreens"
-weight: 50
+weight: 30
 ---
 
 **reMarkable Splashscreens** [:link:](https://remarkable-splashscreens.eirik.re/)

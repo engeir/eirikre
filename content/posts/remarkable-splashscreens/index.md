@@ -4,11 +4,11 @@ contributors: ["Eirik Rolland Enger"]
 date: 2022-07-16T22:27:04-06:00
 description: "Elegant splashscreens for the reMarkable paper tablet"
 images: ["remarkable-splashscreens.png"]
-lastmod: 2024-01-04T23:37:42+0100
+lastmod: 2025-10-07T20:49:11+0200
 lead: "Elegant splashscreens for the reMarkable paper tablet"
 tags: [python, remarkable]
 title: "reMarkable Splashscreens"
-weight: 50
+weight: 30
 ---
 
 The **reMarkable Splashscreens**

@@ -31,6 +31,15 @@
                         <div style="font-size: 0.9rem; line-height: 1.7;">
                             {{ if eq $.Site.Language.LanguageName "English" }}
                             <div style="margin-bottom: 1.2rem;">
+                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info sites/</div>
+                                <div style="margin-top: 0.4rem; font-family: monospace;">
+                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Name</div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personal cookbook</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">photo collection</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 1.2rem;">
                                 <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info links/</div>
                                 <div style="margin-top: 0.4rem; font-family: monospace;">
                                     <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Name</div>
@@ -42,20 +51,19 @@
                                 </div>
                             </div>
 
-                            <div style="margin-bottom: 1.2rem;">
-                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info projects/</div>
-                                <div style="margin-top: 0.4rem; font-family: monospace;">
-                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Name</div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personal cookbook</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">photo collection</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">hobby coding</span> <a href="/categories/projects/" class="terminal-link" style="text-decoration: none;">projects/</a></div>
-                                </div>
-                            </div>
-
                             <div class="terminal-prompt">
                                 <span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor" style="display: inline-block; width: 8px; height: 1em; margin-left: 2px; animation: blink 1s step-end infinite;"></span>
                             </div>
                             {{ else }}
+                            <div style="margin-bottom: 1.2rem;">
+                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info nettsteder/</div>
+                                <div style="margin-top: 0.4rem; font-family: monospace;">
+                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Navn</div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personlig kokebok</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
+                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">fotosamling</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div>
+                                </div>
+                            </div>
+
                             <div style="margin-bottom: 1.2rem;">
                                 <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info lenker/</div>
                                 <div style="margin-top: 0.4rem; font-family: monospace;">
@@ -65,16 +73,6 @@
                                     <div><span class="terminal-info" style="display: inline-block; width: 20ch;">poster & innlegg</span> <a href="https://bsky.app/profile/eirik.re" class="terminal-link" style="text-decoration: none;">bluesky</a></div>
                                     <div><span class="terminal-info" style="display: inline-block; width: 20ch;">bilder & piksler</span> <a href="https://pixelfed.social/eirikre" class="terminal-link" style="text-decoration: none;">pixelfed</a></div>
                                     <div><span class="terminal-info" style="display: inline-block; width: 20ch;">profesjonelt</span> <a href="https://www.linkedin.com/in/eirik-rolland-enger/" class="terminal-link" style="text-decoration: none;">linkedin</a></div>
-                                </div>
-                            </div>
-
-                            <div style="margin-bottom: 1.2rem;">
-                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info prosjekter/</div>
-                                <div style="margin-top: 0.4rem; font-family: monospace;">
-                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Navn</div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personlig kokebok</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">fotosamling</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">hobbykoding</span> <a href="/nb/categories/projects/" class="terminal-link" style="text-decoration: none;">prosjekter/</a></div>
                                 </div>
                             </div>
 

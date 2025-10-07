@@ -1,4 +1,5 @@
 [tools]
+hugo = "latest"
 node = "latest"
 usage = "latest"
 
