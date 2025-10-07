@@ -170,32 +170,81 @@
 
 .showcase .card {
   height: auto;
-  margin: 1rem;
+  margin: 0;
 }
 
-.showcase .card-img-overlay {
-  position: absolute;
-  inset: auto 0 0;
-  padding: var(--bs-card-img-overlay-padding);
-  border-radius: 0;
-  background-color: hsla(224deg, 14%, 16%, 0.95);
-  transition-timing-function: cubic-bezier(0,0,.2,1);
-  transition-duration: .3s;
-  transition-property: opacity;
-  opacity: 0.7;
+.post-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--bs-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  animation: fadeInUp 0.6s ease-out backwards;
 
-  .card-title {
-    margin-top: 0;
-    color: var(--sl-color-gray-2);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
   }
 
-  .card-text {
-    color: var(--sl-color-gray-2);
+  .card-img-wrapper {
+    height: 200px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-title a {
+    color: inherit;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--bs-primary);
+    }
+  }
+
+  .post-tags .badge {
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .icon-tabler-clock {
+    vertical-align: text-bottom;
   }
 }
 
-.showcase .card:hover .card-img-overlay {
-  opacity: 1;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Stagger animation delay for cards
+@for $i from 1 through 12 {
+  .post-card:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.1}s;
+  }
+}
+
+@include color-mode(dark) {
+  .post-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      box-shadow: 0 0.5rem 1.5rem rgba(255, 255, 255, 0.1) !important;
+    }
+  }
 }
 
 .pagination {

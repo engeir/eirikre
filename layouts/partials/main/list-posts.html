@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-11 col-lg-9 text-center">
-        <h1 class="display-2 fw-normal mt-1">{{ .Description }}</h1>
+        <h1 class="display-2 fw-normal mt-1">{{ .Title }}</h1>
       </div>
     </div>
   </div>
@@ -18,13 +18,13 @@
   <div class="container">
     <div class="row showcase justify-content-center py-3">
       <div class="col-main-section">
-        <div class="row row-flex">
+        <div class="row row-flex g-4">
           <!-- Source: https://discourse.gohugo.io/t/how-to-conditionally-apply-html-code-after-every-3-posts/3118/2 -->
           {{ range $i, $e := .Paginator.Pages }}
             {{ if or (mod $i 5 | eq 0) (mod $i 5 | eq 1) }}
-              <div class="col-md-8 p-0">
+              <div class="col-md-8">
             {{ else }}
-              <div class="col-md-8 col-xl p-0">
+              <div class="col-md-8 col-xl">
             {{ end }}
                 {{ .Render "item" }}
               </div>
