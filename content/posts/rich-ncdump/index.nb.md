@@ -6,13 +6,13 @@ description: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 excerpt: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 homepage: true
 images: ['nnn-demo.png']
-lastmod: 2024-05-12T11:51:31+0200
+lastmod: 2025-10-07T20:48:37+0200
 lead: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 link: "https://ncdump-rich.readthedocs.io/"
 pinned: true
 tags: [python, CLI]
 title: "Rich NcDump"
-weight: 50
+weight: 40
 ---
 
 <!-- # Rich NcDump  -->

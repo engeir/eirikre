@@ -1,12 +1,17 @@
 [[main]]
-name = "Innlegg"
-url = "/nb/posts/"
+name = "Blogg"
+url = "/nb/blog/"
 weight = 10
 
 [[main]]
-name = "Blogg"
-url = "/nb/blog/"
+name = "Innlegg"
+url = "/nb/posts/"
 weight = 20
+
+[[main]]
+name = "Arbeid"
+url = "/nb/work/"
+weight = 25
 
 [[main]]
 name = "Emner"
@@ -75,10 +80,10 @@ weight = 40
 
 [[sidebar_posts]]
   name = "Rich NcDump"
-  pageRef = "/posts/ncdump-rich"
+  pageRef = "/posts/rich-ncdump"
   weight = 40
 
 [[footer]]
 name = "Kildekode"
-url = "https://github.com/engeir/flottflyt"
+url = "https://github.com/engeir/eirikre"
 weight = 10

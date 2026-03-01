@@ -6,13 +6,13 @@ description: "Pretty-print a preview of netCDF files using Rich"
 excerpt: "Pretty-print a preview of netCDF files using Rich"
 homepage: true
 images: ['nnn-demo.png']
-lastmod: 2024-01-04T23:36:41+0100
+lastmod: 2025-10-07T20:41:35+0200
 lead: "Pretty-print a preview of netCDF files using Rich"
 link: "https://ncdump-rich.readthedocs.io/"
 pinned: true
 tags: [python, CLI]
 title: "Rich NcDump"
-weight: 50
+weight: 40
 ---
 
 <!-- # Rich NcDump  -->

@@ -1,0 +1,4 @@
+[daemons.serve]
+run = "mise run dev"
+auto = ["start", "stop"]
+retry = 0

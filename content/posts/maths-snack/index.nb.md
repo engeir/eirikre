@@ -3,11 +3,11 @@ contributors: ["Eirik Rolland Enger"]
 date: 2022-07-16T22:29:26-06:00
 description: "Et monorepo bestående av små simuleringer og implementasjoner av tallserier"
 images: ["snowy_hills.png"]
-lastmod: 2024-05-12T11:50:50+0200
+lastmod: 2025-10-07T20:49:59+0200
 lead: "Et monorepo bestående av små simuleringer og implementasjoner av tallserier"
 tags: [python, math, fractals, simulations]
 title: "Maths Snack"
-weight: 50
+weight: 10
 ---
 
 **Maths Snack** [:link:](https://maths-snack.eirik.re/) lageret er fylt med alt som er

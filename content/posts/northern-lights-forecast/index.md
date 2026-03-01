@@ -5,11 +5,11 @@ date: 2022-07-16T22:28:16-06:00
 description: "CLI tool that notifies about northern light events, with support for a telegram bot"
 excerpt: "CLI tool that notifies about northern light events, with support for a telegram bot"
 images: ["northern-lights.JPG"]
-lastmod: 2024-05-12T12:01:26+0200
+lastmod: 2025-10-07T20:49:24+0200
 lead: "CLI tool that notifies about northern light events, with support for a telegram bot"
 tags: [CLI, python, raspberry-pi]
 title: "Northern Lights Forecast"
-weight: 50
+weight: 20
 ---
 
 <!-- # [Northern Lights Forecast](https://github.com/engeir/northern-lights-forecast) -->
