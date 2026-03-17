@@ -4,7 +4,7 @@ description: "En hyllest til mise-en-place"
 excerpt: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 lead: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 date: 2026-02-21T22:16:35+0100
-lastmod: 2026-03-17T22:20:59+0100
+lastmod: 2026-03-17T22:36:18+0100
 draft: false
 weight: 50
 images: ["paper-publishing-workflow.png"]
@@ -17,7 +17,7 @@ homepage: false
 
 > En hyllest til mise-en-place
 
-{{<callout context="tip" title="TL;DR" >}}
+{{<callout context="tip" title="TL;DR" icon="rocket">}}
 
 Installer et nytt prosjekt fra
 [paper-publish-process](https://github.com/engeir/paper-publishing-process) med
@@ -180,7 +180,7 @@ La oss fikse feilen fra i stad ved å
 1. Legge `mise.local.toml` til i `.gitignore`
 2. Spesifisere en lokal Bib-fil i `mise.local.toml`
 
-{{< callout context="caution" title="Lokal bib-fil" >}}
+{{<callout context="caution" title="Lokal bib-fil" icon="alert-triangle">}}
 
 Merk at den lokale fila sin posisjon enten må være "absolutt" (`/home/user/the-file`),
 eller "relativ" fra `tex`-mappen, samt at den spesifiseres uten `.bib`.
@@ -351,7 +351,7 @@ oppsett, kan vi enkelt sette opp Git commit hooks:
 hk install
 ```
 
-{{< callout context="caution" title="Pre-commit vs. mise run compile" >}}
+{{<callout context="danger" title="Pre-commit vs. mise run compile" icon="alert-octagon">}}
 
 Siden `mise run|watch compile` gjør alle `\bibliography{...}` om til å bruke den lokale
 hovedreferansen, mens pre-commit hooken via `hk` gjør de om til å bruke de genererte
@@ -513,7 +513,7 @@ som vi også legger til:
 - `tex/reviewresponse-extra.sty`: ekstra TeX-kode som setter opp formatering i
   review-dokumentene
 
-{{<callout context="tip" title="Feil Git Tag" >}}
+{{<callout context="note" title="Feil Git Tag" icon="bulb">}}
 
 Om du på et tidspunkt tenker at du er klar til å sende inn manuskriptet og lager en Git
 Tag mot siste commit, men så senere innser at du trenger å gjøre ytterligere endringer
