@@ -4,7 +4,7 @@ description: "En hyllest til mise-en-place"
 excerpt: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 lead: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 date: 2026-02-21T22:16:35+0100
-lastmod: 2026-03-17T21:58:39+0100
+lastmod: 2026-03-17T22:20:59+0100
 draft: false
 weight: 50
 images: ["paper-publishing-workflow.png"]
@@ -38,12 +38,12 @@ En frustrasjon fra da jeg først begynte å skrive artikler som skulle sendes in
 tidsskrifter og gå gjennom en vurderingssyklus var å kunne holde styr på hvilken versjon
 som ble sendt inn til hvilket tidspunkt. Hvilken versjon skal jeg svare på, hvilken
 versjon skal den oppdaterte versjonen differensieres mot? Dette var en svært manuell
-prosess hvor jobben med holde styr på hva som skulle sendes inn i nyeste revisjon tidvis
-føltes like stor som selve skrivingen.
+prosess hvor jobben med å holde styr på hva som skulle sendes inn i nyeste revisjon
+tidvis føltes like stor som selve skrivingen.
 
 Heldigvis finnes det løsninger.
 
-## Oppsett
+## Oppsett av verktøy og repo
 
 Alt skal kunne leve uavhengig av systemet man først utvikler på, så vi lager oss et
 Git-repo som alle filene kan leve i. I denne guiden kommer vi til å benytte GitHub sin
@@ -52,7 +52,7 @@ kalte min `paper-publishing-process`, så la oss klone det ned:
 
 ```bash
 git clone git@github.com:engeir/paper-publishing-process.git
-cd paper-publishing process
+cd paper-publishing-process
 ```
 
 Videre trenger vi å kunne installere alt av programvare, og til det bruker vi
@@ -81,12 +81,13 @@ pkl = "latest"
 Denne må vi gi tillatelse til [mise](https://mise.jdx.dev/) til å bruke, `mise trust`,
 før vi installerer alt med `mise install`.
 
-Repoet på dette stadiet kan sees på commit
-[ce3150c](https://github.com/engeir/paper-publishing-process/commit/ce3150c6b25d2bbab7de1bdd98f2be6e64180dd4).
-Her kan man også se at i den første commiten la jeg til en enkel lisensfil (MIT) og en
-`.gitignore` egnet for TeX-utvikling.
+I den første commiten la jeg til en enkel lisensfil (MIT) og en `.gitignore` egnet for
+TeX-utvikling.
 
-La oss i samme slengen legge til noen files som er behjelpelig med å holde repoet opp
+_→ Se commit
+[ce3150c](https://github.com/engeir/paper-publishing-process/commit/ce3150c6b25d2bbab7de1bdd98f2be6e64180dd4)._
+
+La oss i samme slengen legge til noen filer som er behjelpelig med å holde repoet opp
 til en god standard hva angår formatering:
 
 - `tex-fmt.toml`: Formatering av `.tex` og `.bib`
@@ -94,8 +95,10 @@ til en god standard hva angår formatering:
 - `.yamlfmt.yml`: Formatering av `.yml`
 - `hk.pkl`: Formatering og linting
 
-Denne endringen oppdaterer også `mise.toml` og lager fila `tex/main.tex`, se
-[b161e41](https://github.com/engeir/paper-publishing-process/commit/b161e41dc3fe4c10b6abb50f69a71f4d105c143e).
+Denne endringen oppdaterer også `mise.toml` og lager fila `tex/main.tex`.
+
+_→ Se commit
+[b161e41](https://github.com/engeir/paper-publishing-process/commit/b161e41dc3fe4c10b6abb50f69a71f4d105c143e)._
 
 Vi kan sjekke at alt så langt er som det skal:
 
@@ -120,16 +123,16 @@ bib-filepath stderr:
 [fix-bib-filepath] $ #!/usr/bin/env bash
 ```
 
-## Kompilering
+## Automatisk kompilering av TeX
 
-### Introduksjon
+### Lokal kompilering med mise
 
 Vi er nå klare til å jobbe med TeX-filene! Vi ønsker å kunne skrive i `tex/main.tex`, og
 hver gang vi lagrer så skal PDF-en oppdateres automatisk. Vi ser igjen til
 [mise](https://mise.jdx.dev/) for å få denne funksjonaliteten.
 
-Se endringene i commit
-[e7127b4](https://github.com/engeir/paper-publishing-process/commit/e7127b4).
+_→ Se commit
+[e7127b4](https://github.com/engeir/paper-publishing-process/commit/e7127b4)._
 
 {{< details "Motivasjon for mise tasks" >}}
 
@@ -163,7 +166,7 @@ arbeidsflyten.
 For å kunne ha så minimale `.bib`-filer som mulig i repoet, blir alle generert fra en
 lokal "hovedreferansefil". Denne fila er det `LOCAL_BIB_PATH` verdien som vi la til i
 `mise.toml` peker på. Denne hovedreferansen er tiltenkt å være en fil som lever kun
-lokalt, og ikke i Git-repoet, og skal kunne levere refaranser ikke bare til dette
+lokalt, og ikke i Git-repoet, og skal kunne levere referanser ikke bare til dette
 prosjektet, men til alle dine TeX-prosjekter! Bibfish vil da lese den og generere en
 referansefil basert kun på de referansene som finnes i en gitt TeX-fil.
 
@@ -184,9 +187,8 @@ eller "relativ" fra `tex`-mappen, samt at den spesifiseres uten `.bib`.
 
 {{< /callout >}}
 
-I commit [a149cdf](https://github.com/engeir/paper-publishing-process/commit/a149cdf) la
-jeg også til den lokale hovedreferansen siden jeg her ønsker å illustrere med et
-minimalt eksempel, men vanligvis ville jeg lagt den utenfor repoet. Legg også til
+Jeg la også til den lokale hovedreferansen her for å illustrere med et minimalt
+eksempel, men vanligvis ville jeg lagt den utenfor repoet. Legg også til
 
 ```toml {title="mise.local.toml"}
 [env]
@@ -227,6 +229,9 @@ LOCAL_BIB_PATH = "../main-ref"
 }
 ```
 
+_→ Se commit
+[a149cdf](https://github.com/engeir/paper-publishing-process/commit/a149cdf)._
+
 Når vi nå forsøker å kompilere, ingen error!
 
 ```bash
@@ -251,7 +256,7 @@ $ ls tex
 main.aux  main.bib  main.fdb_latexmk  main.log  main.pdf  main.tex
 ```
 
-### BBL-filer
+### BBL-filer og referanser i Git
 
 La oss legge til noen referanser.
 
@@ -292,24 +297,26 @@ run = [{ task = "localize-bib-paths" }, { task = "*:compile" }]
 depends = ["main:*"]
 ```
 
-Når vi nå kjører `mise wtach compile` vil en ny fil bli generert: `tex/main.bbl`. Denne
+Når vi nå kjører `mise watch compile` vil en ny fil bli generert: `tex/main.bbl`. Denne
 er det vanlig å ignorere, men vi tenger denne i fremtiden, så vi fjerner den fra
 `.gitignore`.
 
-Om vi nå sjekker commit
-[1a523ea](https://github.com/engeir/paper-publishing-process/commit/1a523ea) vil vi
-finne at den inneholder en ny `.bbl`-fil, og at `.bib`-fila har blitt oppdatert med en
-(og bare en) referanse, nemlig den vi la til i `tex/main.tex`!
+Den inneholder en ny `.bbl`-fil, og `.bib`-fila har blitt oppdatert med én (og bare én)
+referanse, nemlig den vi la til i `tex/main.tex`!
 
-### Avhengigheter
+_→ Se commit
+[1a523ea](https://github.com/engeir/paper-publishing-process/commit/1a523ea)._
+
+### Håndtering av TeX-pakker med tlmgr
 
 Vi bruker [tinytex](https://yihui.org/tinytex/) som TeX-distribusjon i dette prosjektet.
 Den er som navnet antyder mye mindre enn den vanligere TeX-live/TeX-live-full. Det betyr
 også at vi litt oftere vil oppleve at pakker ikke er tilgjengelige, men det gir oss til
 gjengjeld mer kontroll. La oss bruke et knippe pakker som ikke er å finne i TinyTeX.
 
-Se commit [fe28c24](https://github.com/engeir/paper-publishing-process/commit/fe28c24)
-for oppdatert `tex/main.tex` og `mise.toml`.
+_→ Se commit
+[fe28c24](https://github.com/engeir/paper-publishing-process/commit/fe28c24) for
+oppdatert `tex/main.tex` og `mise.toml`._
 
 Om du først endrer `tex/main.tex` med innholdet i commiten over og har
 `mise watch compile` kjørende burde den feile, og klage på at `underscore` ikke er
@@ -333,7 +340,7 @@ jeg legger til og fjerner referanser.
 Neste steg: automatisk kompilering på GitHub, støtte for versjonering via Git og rutiner
 for svar til tilbakemelding fra tidsskrifter.
 
-## Pipeline
+## CI/CD-pipeline på GitHub
 
 ### Git commit hooks
 
@@ -348,14 +355,14 @@ hk install
 
 Siden `mise run|watch compile` gjør alle `\bibliography{...}` om til å bruke den lokale
 hovedreferansen, mens pre-commit hooken via `hk` gjør de om til å bruke de genererte
-bib-filene vil det opstå konflikt mellom de.
+bib-filene vil det oppstå konflikt mellom de.
 
 Hver gang man lager en commit er det derfor lurt å stoppe `mise watch compile`, slik at
 den ikke skriver over før man er ferdig med commiten.
 
 {{< /callout >}}
 
-### CI/CD
+### Automatisk bygging og release
 
 For å sette opp CI/CD lager vi fila `mise.ci.toml`, samt tre filer i `.github/workflows`
 og `.mise/tasks`:
@@ -373,20 +380,22 @@ og `.mise/tasks`:
   Legger alle filer som et tidsskrift ønsker i et arkiv, for enkel opplasting ved
   innsendelse.
 
-Se commit [93c8487](https://github.com/engeir/paper-publishing-process/commit/93c8487)
-for innholdet i filene.
+_→ Se commit
+[93c8487](https://github.com/engeir/paper-publishing-process/commit/93c8487) for
+innholdet i filene._
 
-Den commiten feilet faktisk i CI på GitHub, som jeg fikset i commit
-[06262fd](https://github.com/engeir/paper-publishing-process/commit/06262fd). Her hadde
-jeg altså glemt at alle filer i `.mise/tasks` må være kjørbare (executable bit), det vil
-si jeg måtte
+Den commiten feilet faktisk i CI på GitHub. Her hadde jeg altså glemt at alle filer i
+`.mise/tasks` må være kjørbare (executable bit), det vil si jeg måtte
 
 ```bash
 chmod +x .mise/tasks/package
 ```
 
-Jeg endret også på hvordan TinyTeX blir installert, og la til oppdatering av `tlmgr` in
+Jeg endret også på hvordan TinyTeX blir installert, og la til oppdatering av `tlmgr` i
 postinstall hook.
+
+_→ Se commit
+[06262fd](https://github.com/engeir/paper-publishing-process/commit/06262fd)._
 
 Under ser vi at CI/CD kjørte uten error og ga oss en `paper-assets` artefakt.
 
@@ -396,7 +405,7 @@ Under ser vi at CI/CD kjørte uten error og ga oss en `paper-assets` artefakt.
 
 Vi er nå nesten klare til å sende manuskriptet inn til et tidsskrift, men aller først
 skal vi sette opp versjonering i Git som genererer nye utgivelser med endringslogg.
-[Git-Cliff](https://git-cliff.org/) er et veldig fleksibelt og kreftfullt verktøy til
+[Git-Cliff](https://git-cliff.org/) er et veldig fleksibelt og kraftfullt verktøy til
 nettopp dette, og vi konfigurerer den med `cliff.toml`. Denne fila er helt generell, med
 unntak av de siste to linjene, som vist under. De indikerer eier av repoet og navnet på
 repoet.
@@ -409,9 +418,11 @@ owner = "engeir"
 repo = "paper-publishing-process"
 ```
 
-Endringene i filer kan sees i commit
-[bfe67c6](https://github.com/engeir/paper-publishing-process/commit/bfe67c6), og vi kan
-nå sette en Git Tag på siste commit for å lage vår første versjon av manuskriptet!
+Vi kan nå sette en Git Tag på siste commit for å lage vår første versjon av
+manuskriptet!
+
+_→ Se commit
+[bfe67c6](https://github.com/engeir/paper-publishing-process/commit/bfe67c6)._
 
 ```bash
 $ git tag -a v1.0.0 -m "**Release v1.0.0**" -m 'First release!'
@@ -457,17 +468,18 @@ genereres av Git-Cliff. Den vil dog være synlig i Git Tags, se
 
 {{< /details >}}
 
-## Review-syklus
+## Review-syklus og revisjon
 
-### Svar fra tidsskrift
+### Motta og sette opp revisjon
 
 Selv om vi var aldri så fornøyd med manuskriptet får vi sannsynligvis tilbake en review
 og forespørsel om å forbedre enkelte passasjer. Det er nå den gode jobben vi har lagt
 ned i Git og versjonering virkelig kommer til syne.
 
 Vi lager oss en siste [mise](https://mise.jdx.dev/) task: `.mise/tasks/setup-revision`.
-Se commit [b490542](https://github.com/engeir/paper-publishing-process/commit/b490542)
-(denne commiten legger også til `diff*.tex` filer i `.github/workflows/build.yml`).
+_→ Se commit
+[b490542](https://github.com/engeir/paper-publishing-process/commit/b490542) (legger
+også til `diff*.tex`-filer i `.github/workflows/build.yml`)._
 
 La oss teste den:
 
@@ -506,7 +518,7 @@ som vi også legger til:
 Om du på et tidspunkt tenker at du er klar til å sende inn manuskriptet og lager en Git
 Tag mot siste commit, men så senere innser at du trenger å gjøre ytterligere endringer
 kan man enkelt flytte eller slette Git Tags. Hvis man ikke flytter en feilplassert Git
-Tag vil ikke `setup-revision` tasken fungere som forventet, siden den da sammenlinker
+Tag vil ikke `setup-revision` tasken fungere som forventet, siden den da sammenligner
 nåværende `main.tex` med en Git Tag som peker mot filer som aldri ble sendt inn til
 tidsskriftet.
 
@@ -530,7 +542,7 @@ synlig i `main.pdf` og `diff-v1.0.0.pdf`. Til slutt gjør vi en endring i
 
 Differansen mellom den nye `main.tex`/`main.pdf` og den vi sendte inn i versjon `v1.0.0`
 kan vi enkelt generere uten at filen eksisterer lokalt. Siden vi har en Git Tag
-refererer vi bare til den, og sammenlinker med fila på det tidspunktet i Git-historien.
+refererer vi bare til den, og sammenligner med fila på det tidspunktet i Git-historien.
 Det er i dette steget vi er avhengige av `.bbl`-filene, som inneholder den kompilerte
 (eksakte) bibliografien som ble brukt til å generere PDF-ene. Dette gjøres i de
 genererte `create`-taskene med kommandoen
@@ -539,16 +551,17 @@ genererte `create`-taskene med kommandoen
 latexdiff-vc --force --git --flatten -r <git-tag> main.tex
 ```
 
-Se de nye filene i commit
-[68d913f](https://github.com/engeir/paper-publishing-process/commit/68d913f).
+_→ Se commit
+[68d913f](https://github.com/engeir/paper-publishing-process/commit/68d913f) for de nye
+filene._
 
-### Svar til tidsskrift
+### Sende inn revidert manuskript
 
 La oss si at vi nå er fornøyd med våre siste endringer og er klare til å sende inn på
 nytt til tidsskriftet. Da setter vi igjen en Git Tag på siste commit, dytter den opp og
 venter på at siste versjon skal gjøres klar for oss i et pent format.
 
-Siden jeg personlig liker CavVer i denne sammenhengen bytter jeg til det nå:
+Siden jeg personlig liker CalVer i denne sammenhengen bytter jeg til det nå:
 
 ```bash
 $ git tag -a v2026.3.0 -m "**Release v2026.03.0**" -m 'Answer.'
@@ -571,7 +584,7 @@ To github.com:engeir/paper-publishing-process.git
 
 Om vi nå får nye runder med endringer fra reviewerne, gjør vi bare det samme på nytt:
 
-1. `mise run setup-sevision`
+1. `mise run setup-revision`
 2. `mise watch compile`: Gjør alle endringer på `main.tex` og `review-<git-tag>.tex` som
    vi mener er nødvendig
 3. `git commit ...`
@@ -690,7 +703,7 @@ ut etter at de siste nødvendige endringene ble gjort, klar til å publiseres!
 
 {{</details>}}
 
-## Avslutning
+## Klargjøring og README
 
 Repoet fungerer nå fullt og helt til å både enkelt klargjøre et manuskript for
 innsendelse, og til å lage svar og differanse/endringsdokument på eventuelle reviewer.
@@ -754,10 +767,11 @@ latest version of the manuscript and the generated PDF.
   [latest artefact](https://github.com/engeir/paper-publishing-process/actions/workflows/release.yml?query=branch%3Amain).
 ```
 
-Se commit [b3cbc9d](https://github.com/engeir/paper-publishing-process/commit/b3cbc9d)
-for endringene gjort i `README.md`.
+_→ Se commit
+[b3cbc9d](https://github.com/engeir/paper-publishing-process/commit/b3cbc9d) for
+endringene gjort i `README.md`._
 
-## Epilog
+## Videre utvidelser
 
 ### Endringslogg
 
@@ -769,7 +783,7 @@ endringsloggen i den fila.
 ### PR-basert versjonering
 
 Man kan også sette opp PR-basert (pull request) versjonering som benytter
-[Convenvitonal commits](https://www.conventionalcommits.org/en/v1.0.0/) til å automatisk
+[Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) til å automatisk
 generere nye forslag til releaser. Dette krever en litt større endring i konfigurasjonen
 i GitHub CI/CD.
 
@@ -802,10 +816,11 @@ til alle vanlige plattformer. Andre kommando genererer et shell-skript som insta
 samme versjon av mise-en-place som er i bruk, mens den siste kommandoen genererer
 dokumentasjon for alle tasks som er definert med mise-en-place.
 
-Se commit [9c1fb30](https://github.com/engeir/paper-publishing-process/commit/9c1fb30)
-for filer som legger til funksjonalitet for
+_→ Se commit
+[9c1fb30](https://github.com/engeir/paper-publishing-process/commit/9c1fb30) for filer
+som legger til funksjonalitet for
 [versjonering av actions](#sikker-versjonering-av-github-actions) og
-[mise bootstraping](#enda-mer-mise-magi).
+[mise bootstraping](#enda-mer-mise-magi)._
 
 <!--
 vi: spelllang=nb
