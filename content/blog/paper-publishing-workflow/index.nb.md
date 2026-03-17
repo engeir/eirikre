@@ -4,7 +4,7 @@ description: "En hyllest til mise-en-place"
 excerpt: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 lead: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 date: 2026-02-21T22:16:35+0100
-lastmod: 2026-03-17T22:36:18+0100
+lastmod: 2026-03-17T23:10:27+0100
 draft: false
 weight: 50
 images: ["paper-publishing-workflow.png"]
@@ -15,7 +15,7 @@ pinned: false
 homepage: false
 ---
 
-> En hyllest til mise-en-place
+> _En hyllest til mise-en-place_
 
 {{<callout context="tip" title="TL;DR" icon="rocket">}}
 
@@ -485,7 +485,6 @@ La oss teste den:
 
 ```bash
 $ mise run setup-revision
-Found existing alias for "mise run". You should use: "mr"
 [setup-revision] $ ~/projects/paper-publishing-process/.mise/tasks/setup-revision
 Setting up revision against v1.0.0...
 Working on  main.tex
