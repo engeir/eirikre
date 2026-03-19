@@ -33,6 +33,10 @@ copyRight = "Copyright (c) 2020-2024 eirikre"
   isPlainText = true
   notAlternative = true
 
+[outputFormats.RSS]
+  baseName = "rss"
+  noUgly = true
+
 # Add output format for section sitemap.xml
 [outputFormats.SITEMAP]
   mediaType = "application/xml"

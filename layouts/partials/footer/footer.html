@@ -11,6 +11,9 @@
           {{ range .Site.Menus.footer -}}
             <li class="list-inline-item"><a href="{{ .URL | relURL }}">{{ .Name | emojify }}</a></li>
           {{ end -}}
+          {{ if eq .Section "blog" -}}
+          <li class="list-inline-item"><a href="{{ "blog/rss.xml" | relLangURL }}">&#x2BAD; RSS</a></li>
+          {{- end }}
         </ul>
       </div>
     </div>
