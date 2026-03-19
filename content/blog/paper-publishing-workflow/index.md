@@ -4,7 +4,7 @@ description: "A homage to mise-en-place"
 excerpt: "Automating the submit-review cycle leading up to publications"
 lead: "Automating the submit-review cycle leading up to publications"
 date: 2026-02-21T22:16:35+0100
-lastmod: 2026-03-17T23:10:44+0100
+lastmod: 2026-03-19T21:57:47+0100
 draft: false
 weight: 50
 images: ["paper-publishing-workflow.png"]
@@ -20,7 +20,7 @@ homepage: false
 {{<callout context="tip" title="TL;DR" icon="rocket">}}
 
 Install a new project from
-[paper-publish-process](https://github.com/engeir/paper-publishing-process) with
+[paper-publishing-process](https://github.com/engeir/paper-publishing-process) with
 
 ```bash {frame="none"}
 curl -fsSL https://raw.githubusercontent.com/engeir/paper-publishing-process/main/INSTALL.sh | sh

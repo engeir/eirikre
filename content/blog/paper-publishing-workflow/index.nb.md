@@ -4,7 +4,7 @@ description: "En hyllest til mise-en-place"
 excerpt: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 lead: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 date: 2026-02-21T22:16:35+0100
-lastmod: 2026-03-17T23:10:27+0100
+lastmod: 2026-03-19T21:57:41+0100
 draft: false
 weight: 50
 images: ["paper-publishing-workflow.png"]
@@ -20,7 +20,7 @@ homepage: false
 {{<callout context="tip" title="TL;DR" icon="rocket">}}
 
 Installer et nytt prosjekt fra
-[paper-publish-process](https://github.com/engeir/paper-publishing-process) med
+[paper-publishing-process](https://github.com/engeir/paper-publishing-process) med
 
 ```bash {frame="none"}
 curl -fsSL https://raw.githubusercontent.com/engeir/paper-publishing-process/main/INSTALL.sh | sh
