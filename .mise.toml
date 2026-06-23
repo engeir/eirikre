@@ -1,6 +1,7 @@
 [tools]
 hugo = "latest"
 node = "latest"
+"npm:sequoia-cli" = "latest"
 usage = "latest"
 
 [tasks.update]

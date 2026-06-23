@@ -4,10 +4,11 @@ description: "En hyllest til mise-en-place"
 excerpt: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 lead: "Automatisering av innsendings- og vurderingssyklusen frem mot publiseringer"
 date: 2026-02-21T22:16:35+0100
-lastmod: 2026-03-19T21:57:41+0100
+lastmod: 2026-06-23T22:53:36+0200
 draft: false
 weight: 50
 images: ["paper-publishing-workflow.png"]
+coverImage: "paper-publishing-workflow.png"
 toc: true
 tags: [mise, latex, tinytex, paper]
 contributors: ["Eirik Rolland Enger"]

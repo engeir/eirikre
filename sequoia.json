@@ -1,0 +1,22 @@
+{
+  "publicDir": "./static",
+  "outputDir": "./public",
+  "pathPrefix": "/blog",
+  "publishContent": true,
+  "removeIndexFromSlug": false,
+  "stripDatePrefix": false,
+  "autoSync": true,
+  "$schema": "https://tangled.org/stevedylan.dev/sequoia/raw/main/sequoia.schema.json",
+  "siteUrl": "https://eirik.re",
+  "contentDir": "./content/blog",
+  "imagesDir": "./assets/images",
+  "publicationUri": "at://did:plc:jhmdbcph6xja3hamtoi4kdy4/site.standard.publication/3moyb2g35kh2t",
+  "frontmatter": {
+    "publishDate": "date",
+    "coverImage": "coverImage"
+  },
+  "bluesky": {
+    "enabled": true,
+    "maxAgeDays": 300
+  }
+}

@@ -4,10 +4,11 @@ description: "Setting up my own Whoogle search enigne on an Nginx server"
 excerpt: "Setting up my own Whoogle search enigne on an Nginx server"
 lead: "Setting up my own Whoogle search enigne on an Nginx server"
 date: 2023-08-19T22:35:06+02:00
-lastmod: 2023-12-31T15:37:11+0100
+lastmod: 2026-06-23T22:54:00+0200
 draft: false
 weight: 50
 images: ["whoogle.png"]
+coverImage: "whoogle.png"
 toc: true
 tags: [docker, self-host, nginx, whoogle]
 contributors: ["Eirik Rolland Enger"]

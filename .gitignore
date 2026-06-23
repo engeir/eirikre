@@ -113,3 +113,5 @@ public
 resources
 .netlify
 .hugo_build.lock
+
+.sequoia-state.json

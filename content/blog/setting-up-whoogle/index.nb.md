@@ -4,10 +4,11 @@ description: "Sett opp din egen Whoogle søkemotor på en Nginx server"
 excerpt: "Sett opp din egen Whoogle søkemotor på en Nginx server"
 lead: "Sett opp din egen Whoogle søkemotor på en Nginx server"
 date: 2023-08-19T22:35:06+02:00
-lastmod: 2025-10-05T17:22:51+0200
+lastmod: 2026-06-23T22:54:13+0200
 draft: false
 weight: 50
 images: ["whoogle.png"]
+coverImage: "whoogle.png"
 toc: true
 tags: [docker, self-host, nginx, whoogle]
 contributors: ["Eirik Rolland Enger"]
