@@ -1,0 +1,28 @@
+{
+  "lexicon": 1,
+  "id": "buzz.bookhive.book",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "self",
+      "record": {
+        "type": "object",
+        "required": ["title", "author"],
+        "properties": {
+          "title": {"type": "string", "maxLength": 200},
+          "author": {"type": "string", "maxLength": 100},
+          "description": {"type": "string", "maxLength": 2000},
+          "cover": {"type": "string", "format": "uri"},
+          "isbn": {"type": "string"},
+          "publishedDate": {"type": "string", "format": "date"},
+          "rating": {"type": "integer", "minimum": 1, "maximum": 5},
+          "tags": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "createdAt": {"type": "string", "format": "date-time"}
+        }
+      }
+    }
+  }
+}

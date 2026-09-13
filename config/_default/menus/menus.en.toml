@@ -4,6 +4,11 @@ url = "/blog/"
 weight = 10
 
 [[main]]
+name = "Books"
+url = "/books/"
+weight = 15
+
+[[main]]
 name = "Posts"
 url = "/posts/"
 weight = 20
