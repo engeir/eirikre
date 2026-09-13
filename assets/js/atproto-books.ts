@@ -257,16 +257,16 @@ function renderBooks(books: DisplayBook[]): void {
                               ${'★'.repeat(book.rating)}${'☆'.repeat(5 - book.rating)}
                             </div>
                           ` : ''}
-                          ${book.progress !== undefined ? `
-                            <div class="progress mb-2" style="height: 8px;">
-                              <div class="progress-bar bg-success" role="progressbar" 
-                                   style="width: ${book.progress}%" 
-                                   aria-valuenow="${book.progress}" aria-valuemin="0" aria-valuemax="100">
-                              </div>
-                            </div>
-                            ${book.currentPage && book.totalPages ? 
-                              `<small class="text-muted d-block">Page ${book.currentPage} of ${book.totalPages}</small>` : ''}
-                          ` : ''}
+                           ${book.progress !== undefined ? `
+                             <div class="progress mb-2" style="height: 8px;">
+                               <div class="progress-bar" role="progressbar" 
+                                    style="width: ${book.progress}%; background-color: #28a745 !important;"
+                                    aria-valuenow="${book.progress}" aria-valuemin="0" aria-valuemax="100">
+                               </div>
+                             </div>
+                             ${book.currentPage && book.totalPages ? 
+                               `<small class="text-muted d-block">Page ${book.currentPage} of ${book.totalPages}</small>` : ''}
+                           ` : ''}
                           ${book.tags && book.tags.length > 0 ? `
                             <div class="d-flex flex-wrap gap-1 mt-2">
                               ${book.tags.map(tag => `<span class="badge bg-light text-dark">${escapeHtml(tag)}</span>`).join('')}
