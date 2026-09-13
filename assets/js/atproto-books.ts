@@ -234,8 +234,8 @@ function renderBooks(books: DisplayBook[]): void {
                 ${group
                   .map(
                     (book) => `
-                  <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
+                   <div class="col-12 col-md-6 col-lg-4">
+                     <div class="card shadow-sm">
                       ${book.coverUrl ? `
                         <img src="${escapeHtml(book.coverUrl)}" 
                              class="card-img-top" 
