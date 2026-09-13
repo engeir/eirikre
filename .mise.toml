@@ -16,17 +16,21 @@ run = "npm install"
 description = "Run the development server"
 run = "npm run dev"
 
+[tasks.clean]
+description = "Run the development server"
+run = "npm run clean:build"
+
 [tasks.build]
 description = "Build the static website"
 run = "npm run build"
-# sources = [
-#   "package.json",
-#   "content/**",
-#   "assets/**",
-#   "layouts/**",
-#   "config/**",
-# ] # skip running if these files haven't changed
-# outputs = ["public/**"]
+sources = [
+  "package.json",
+  "content/**",
+  "assets/**",
+  "layouts/**",
+  "config/**",
+] # skip running if these files haven't changed
+outputs = ["public/**"]
 
 [tasks.publish]
 description = "Publish the site to my server with rsync"
