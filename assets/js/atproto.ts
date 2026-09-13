@@ -1,4 +1,4 @@
-import { BskyAgent } from '@atproto/api';
+import { BskyAgent } from "@atproto/api";
 
 // BookHive lexicon types (placeholder - need actual lexicon)
 export interface BookHiveBook {
@@ -16,7 +16,7 @@ export interface BookHiveProfile {
 }
 
 // Initialize AT Protocol agent
-export const createAgent = (service: string = 'https://bsky.bookhive.app') => {
+export const createAgent = (service: string = "https://bsky.bookhive.app") => {
   return new BskyAgent({ service });
 };
 
@@ -28,7 +28,7 @@ export const getUserBooks = async (agent: BskyAgent, handle: string) => {
     const profile = await agent.getProfile({ actor: handle });
     return profile;
   } catch (err) {
-    console.error('Failed to fetch books:', err);
+    console.error("Failed to fetch books:", err);
     return null;
   }
 };
