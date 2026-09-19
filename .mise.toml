@@ -4,9 +4,9 @@ hugo = "latest"
 node = "latest"
 pinact = "latest"
 pkl = "latest"
-# "npm:sequoia-cli" = "latest"
 usage = "latest"
 uv = "latest"
+# "npm:sequoia-cli" = "latest"
 
 [tasks.update]
 description = "Update Doks"
