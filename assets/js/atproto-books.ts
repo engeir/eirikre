@@ -158,8 +158,8 @@ interface DisplayBook {
 }
 
 function convertToDisplayBook(record: BookHiveBookRecord): DisplayBook {
-  // Convert stars from 1-10 to 1-5 scale
-  const rating = record.stars ? Math.round(record.stars / 2) : undefined;
+  // Convert stars from the 1-10 scale to a 1-5 scale, keeping half stars
+  const rating = record.stars ? record.stars / 2 : undefined;
 
   // Extract status name (e.g., "reading" from "buzz.bookhive.defs#reading")
   const status = record.status?.split("#")[1] || undefined;
@@ -271,7 +271,7 @@ function renderBooks(books: DisplayBook[]): void {
                             book.rating
                               ? `
                             <div class="text-warning mb-2">
-                              ${"★".repeat(book.rating)}${"☆".repeat(5 - book.rating)}
+                              ${renderStars(book.rating)}
                             </div>
                           `
                               : ""
@@ -322,6 +322,18 @@ function escapeHtml(text: string): string {
   const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
+}
+
+// Render a 1-5 rating, including half stars
+function renderStars(rating: number): string {
+  const full = Math.floor(rating);
+  const half = rating - full >= 0.5;
+  const empty = Math.max(0, 5 - full - (half ? 1 : 0));
+  return (
+    '<i class="bi bi-star-fill"></i>'.repeat(full) +
+    (half ? '<i class="bi bi-star-half"></i>' : "") +
+    '<i class="bi bi-star"></i>'.repeat(empty)
+  );
 }
 
 function truncate(text: string, maxLength: number): string {
