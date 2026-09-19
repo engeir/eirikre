@@ -71,30 +71,41 @@ const BOOKHIVE_COLLECTION = "buzz.bookhive.book";
 const BOOKHIVE_PDS = "https://bluesky.nickthesick.com";
 const BOOKHIVE_DID = "did:plc:enu2j5xjlqsjaylv3du4myh4";
 
-// Fetch books from user's PDS
-async function fetchUserBooks(limit: number = 50): Promise<BookHiveBookRecord[]> {
+// Fetch all books from user's PDS, following the pagination cursor
+async function fetchUserBooks(): Promise<BookHiveBookRecord[]> {
+  const allBooks: BookHiveBookRecord[] = [];
+  const seenCursors = new Set<string>();
   try {
-    const url = new URL(`${PDS_ENDPOINT}/xrpc/com.atproto.repo.listRecords`);
-    url.searchParams.set("repo", USER_DID);
-    url.searchParams.set("collection", BOOKHIVE_COLLECTION);
-    url.searchParams.set("limit", limit.toString());
+    let cursor: string | undefined;
 
-    const response = await fetch(url.toString(), {
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    do {
+      const url = new URL(`${PDS_ENDPOINT}/xrpc/com.atproto.repo.listRecords`);
+      url.searchParams.set("repo", USER_DID);
+      url.searchParams.set("collection", BOOKHIVE_COLLECTION);
+      url.searchParams.set("limit", "100");
+      if (cursor) url.searchParams.set("cursor", cursor);
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
+      const response = await fetch(url.toString(), {
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-    const data: ListRecordsResponse = await response.json();
-    return data.records.map((r) => r.value);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data: ListRecordsResponse = await response.json();
+      allBooks.push(...data.records.map((r) => r.value));
+
+      cursor = data.cursor;
+      if (!cursor || data.records.length === 0 || seenCursors.has(cursor)) break;
+      seenCursors.add(cursor);
+    } while (true);
   } catch (err) {
     console.error("Error fetching user books:", err);
-    return [];
   }
+  return allBooks;
 }
 
 // Fetch catalog book details
@@ -211,11 +222,12 @@ function renderBooks(books: DisplayBook[]): void {
     finished: "Read",
     wantToRead: "Want to Read",
     paused: "Paused",
+    abandoned: "Abandoned",
     other: "Other",
   };
 
   // Ordered status keys
-  const orderedStatuses = ["reading", "finished", "wantToRead", "paused", "other"];
+  const orderedStatuses = ["reading", "finished", "wantToRead", "paused", "abandoned", "other"];
 
   container.innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -323,11 +335,12 @@ const STATUS_PRIORITY: Record<string, number> = {
   finished: 2,
   wantToRead: 3,
   paused: 4,
+  abandoned: 5,
 };
 
 // Initialize on page load
 async function initBooksPage(): Promise<void> {
-  const books = await fetchUserBooks(50);
+  const books = await fetchUserBooks();
   const displayBooks = books.map(convertToDisplayBook);
 
   // Sort by status priority, then by createdAt (newest first)
