@@ -2,6 +2,7 @@
 hk = "latest"
 hugo = "latest"
 node = "latest"
+pinact = "latest"
 pkl = "latest"
 # "npm:sequoia-cli" = "latest"
 usage = "latest"
