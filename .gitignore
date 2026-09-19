@@ -113,5 +113,6 @@ public
 resources
 .netlify
 .hugo_build.lock
+.superpowers/
 
 .sequoia-state.json

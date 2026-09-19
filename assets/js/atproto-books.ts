@@ -194,20 +194,8 @@ function convertToDisplayBook(record: BookHiveBookRecord): DisplayBook {
   };
 }
 
-// Render books to DOM with status sections
-function renderBooks(books: DisplayBook[]): void {
-  const container = document.getElementById("books-app");
-  if (!container) return;
-
-  if (books.length === 0) {
-    container.innerHTML = `
-      <div class="alert alert-info">
-        <p>No books found from BookHive.</p>
-      </div>
-    `;
-    return;
-  }
-
+// Group books by reading status and render full cards
+function renderByStatusMarkup(books: DisplayBook[]): string {
   // Group by status
   const statusGroups: Record<string, DisplayBook[]> = {};
   books.forEach((book) => {
@@ -229,22 +217,26 @@ function renderBooks(books: DisplayBook[]): void {
   // Ordered status keys
   const orderedStatuses = ["reading", "finished", "wantToRead", "paused", "abandoned", "other"];
 
-  container.innerHTML = `
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2>Books (${books.length})</h2>
-    </div>
-    ${orderedStatuses
-      .map((statusKey) => {
-        const group = statusGroups[statusKey];
-        if (!group || group.length === 0) return "";
+  return orderedStatuses
+    .map((statusKey) => {
+      const group = statusGroups[statusKey];
+      if (!group || group.length === 0) return "";
 
-        return `
+      return `
             <div class="mb-5">
               <h3 class="mb-3">${statusLabels[statusKey] || statusKey} (${group.length})</h3>
               <div class="row g-4">
-                ${group
-                  .map(
-                    (book) => `
+                ${group.map((book) => renderBookCard(book)).join("")}
+              </div>
+            </div>
+          `;
+    })
+    .join("");
+}
+
+// Render a single book as a full card (used in the "By status" view)
+function renderBookCard(book: DisplayBook): string {
+  return `
                    <div class="col-12 col-md-6 col-lg-4">
                      <div class="card shadow-sm">
                       ${
@@ -307,15 +299,105 @@ function renderBooks(books: DisplayBook[]): void {
                        ${book.isbn ? `<div style="padding: 0.5rem 1rem; border-top: 1px solid #495057;"><small style="color: #6c757d;">ISBN: ${escapeHtml(book.isbn)}</small></div>` : ""}
                     </div>
                   </div>
-                `,
-                  )
-                  .join("")}
+                `;
+}
+
+// Rating tiers, highest first. Empty tiers are skipped.
+const RATING_TIERS = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1];
+
+// Group books into rating tiers and render a compact cover grid
+function renderByRatingMarkup(books: DisplayBook[]): string {
+  const byTitle = (a: DisplayBook, b: DisplayBook) =>
+    a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
+
+  const tiers = RATING_TIERS.map((tier) => ({
+    label: `<span class="text-warning">${renderStars(tier)}</span>`,
+    books: books.filter((book) => book.rating === tier).sort(byTitle),
+  }));
+
+  const unrated = books.filter((book) => book.rating === undefined).sort(byTitle);
+  if (unrated.length > 0) {
+    tiers.push({ label: "Unrated", books: unrated });
+  }
+
+  return tiers
+    .filter((tier) => tier.books.length > 0)
+    .map(
+      (tier) => `
+            <div class="rating-tier mb-5">
+              <h3 class="rating-tier-heading mb-3">${tier.label} (${tier.books.length})</h3>
+              <div class="cover-grid">
+                ${tier.books.map((book) => renderCoverTile(book)).join("")}
               </div>
             </div>
-          `;
-      })
-      .join("")}
+          `,
+    )
+    .join("");
+}
+
+// Render a single book as a cover tile with a title/author overlay
+function renderCoverTile(book: DisplayBook): string {
+  const cover = book.coverUrl
+    ? `<img src="${escapeHtml(book.coverUrl)}" class="cover-tile-img" alt="${escapeHtml(book.title)}" loading="lazy" onerror="this.style.display='none'">`
+    : `<div class="cover-tile-img cover-tile-placeholder"><i class="bi bi-book"></i></div>`;
+
+  return `
+    <div class="cover-tile">
+      ${cover}
+      <div class="cover-tile-overlay">
+        <div class="cover-tile-title">${escapeHtml(book.title)}</div>
+        <div class="cover-tile-author">${escapeHtml(book.authors)}</div>
+      </div>
+    </div>`;
+}
+
+type BooksView = "status" | "rating";
+
+function getViewFromHash(): BooksView {
+  return window.location.hash === "#rating" ? "rating" : "status";
+}
+
+// Render the books page in the currently selected view
+function renderBooks(books: DisplayBook[]): void {
+  const container = document.getElementById("books-app");
+  if (!container) return;
+
+  if (books.length === 0) {
+    container.innerHTML = `
+      <div class="alert alert-info">
+        <p>No books found from BookHive.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const view = getViewFromHash();
+  const statusActive = view === "status";
+
+  container.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Books (${books.length})</h2>
+    </div>
+    <div class="books-view-tabs nav nav-pills mb-4" role="tablist" aria-label="Books view">
+      <button type="button" class="nav-link${statusActive ? " active" : ""}" data-view="status"
+              role="tab" aria-selected="${statusActive}">By status</button>
+      <button type="button" class="nav-link${statusActive ? "" : " active"}" data-view="rating"
+              role="tab" aria-selected="${!statusActive}">By rating</button>
+    </div>
+    ${view === "rating" ? renderByRatingMarkup(books) : renderByStatusMarkup(books)}
   `;
+}
+
+let currentBooks: DisplayBook[] = [];
+
+// Switch view, syncing the URL hash so the choice is shareable
+function setView(view: BooksView): void {
+  const target = view === "rating" ? "#rating" : "";
+  if (window.location.hash !== target) {
+    window.location.hash = target;
+  } else {
+    renderBooks(currentBooks);
+  }
 }
 
 function escapeHtml(text: string): string {
@@ -353,18 +435,30 @@ const STATUS_PRIORITY: Record<string, number> = {
 // Initialize on page load
 async function initBooksPage(): Promise<void> {
   const books = await fetchUserBooks();
-  const displayBooks = books.map(convertToDisplayBook);
+  currentBooks = books.map(convertToDisplayBook);
 
   // Sort by status priority, then by createdAt (newest first)
-  displayBooks.sort((a, b) => {
+  currentBooks.sort((a, b) => {
     const aPriority = STATUS_PRIORITY[a.status || ""] || 999;
     const bPriority = STATUS_PRIORITY[b.status || ""] || 999;
     if (aPriority !== bPriority) return aPriority - bPriority;
     return (b.createdAt || "").localeCompare(a.createdAt || "");
   });
 
-  renderBooks(displayBooks);
+  renderBooks(currentBooks);
 }
+
+// Re-render when the view hash changes (tab clicks / back button / shared links)
+window.addEventListener("hashchange", () => renderBooks(currentBooks));
+
+// Delegate tab clicks on the view switcher
+document.addEventListener("click", (event: MouseEvent) => {
+  const target = event.target as HTMLElement | null;
+  const button = target?.closest?.("[data-view]") as HTMLElement | null;
+  if (!button) return;
+  event.preventDefault();
+  setView((button.getAttribute("data-view") as BooksView) || "status");
+});
 
 // Start when DOM is ready
 if (document.readyState === "loading") {
