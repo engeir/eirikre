@@ -1,8 +1,11 @@
 [tools]
+hk = "latest"
 hugo = "latest"
 node = "latest"
+pkl = "latest"
 # "npm:sequoia-cli" = "latest"
 usage = "latest"
+uv = "latest"
 
 [tasks.update]
 description = "Update Doks"
@@ -22,6 +25,7 @@ run = "npm run clean:build"
 
 [tasks.build]
 description = "Build the static website"
+outputs = ["public/**"]
 run = "npm run build"
 sources = [
   "package.json",
@@ -30,9 +34,8 @@ sources = [
   "layouts/**",
   "config/**",
 ] # skip running if these files haven't changed
-outputs = ["public/**"]
 
 [tasks.publish]
+depends = ["build"]
 description = "Publish the site to my server with rsync"
 run = "rsync -rtvzP --delete ./public/ root@eirik.re:/var/www/flottflyt"
-depends = ["build"]

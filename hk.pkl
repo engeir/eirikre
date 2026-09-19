@@ -1,0 +1,41 @@
+amends "package://github.com/jdx/hk/releases/download/v1.2.0/hk@1.2.0#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v1.2.0/hk@1.2.0#/Builtins.pkl"
+
+local linters = new Mapping<String, Step> {
+  ["prettier"] = (Builtins.prettier) {
+    glob = List("*.md", "*.yaml", "*.yml", "*.js")
+  }
+  ["djlint"] {
+    glob = "*.html"
+    check = "uvx djlint --check {{files}}"
+    fix = "uvx djlint --reformat --quiet {{files}}"
+  }
+  ["taplo"] = Builtins.taplo
+  ["pkl"] {
+    glob = "*.pkl"
+    check = "pkl format {{files}} >/dev/null"
+    format = "pkl format -w {{files}} >/dev/null"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true // automatically modify files with available linter fixes
+    stash = "git"
+    steps {
+      ...linters // add all linters defined above
+    }
+  }
+  ["pre-push"] {
+    steps = linters
+  }
+  // "fix" and "check" are special steps for `hk fix` and `hk check` commands
+  ["fix"] {
+    fix = true
+    steps = linters
+  }
+  ["check"] {
+    steps = linters
+  }
+}

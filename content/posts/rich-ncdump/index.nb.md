@@ -5,7 +5,7 @@ date: 2022-07-16T22:28:55-06:00
 description: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 excerpt: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 homepage: true
-images: ['nnn-demo.png']
+images: ["nnn-demo.png"]
 lastmod: 2025-10-07T20:48:37+0200
 lead: "Forhåndsvisning av netCDF filer ved hjelp av Rich"
 link: "https://ncdump-rich.readthedocs.io/"
@@ -38,8 +38,8 @@ Nautilus og liknende, så vil denne forhåndsviseren passe perfekt inn i allered
 eksisterende filutforskere som for eksempel [nnn](https://github.com/jarun/nnn) og
 [lf](https://github.com/gokcehan/lf).
 
-````bash=10
+```bash=10
 nc) fifo_pager ncdump-rich -i "$1" ;;
-``````
+```
 
 ![ncdump-rich-example](https://raw.githubusercontent.com/engeir/ncdump-rich/main/demo/nnn-demo.png)

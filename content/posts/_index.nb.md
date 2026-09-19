@@ -1,5 +1,5 @@
 ---
-title : "Innlegg"
+title: "Innlegg"
 description: "Innlegg på eirik.re"
 lead: ""
 date: 2023-12-31T08:47:36+00:00

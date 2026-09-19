@@ -5,7 +5,7 @@ date: 2022-07-16T22:28:55-06:00
 description: "Pretty-print a preview of netCDF files using Rich"
 excerpt: "Pretty-print a preview of netCDF files using Rich"
 homepage: true
-images: ['nnn-demo.png']
+images: ["nnn-demo.png"]
 lastmod: 2025-10-07T20:41:35+0200
 lead: "Pretty-print a preview of netCDF files using Rich"
 link: "https://ncdump-rich.readthedocs.io/"
@@ -34,12 +34,12 @@ pipx install ncdump-rich
 ```
 
 If you are like me and you think browsing through your files is a lot easier in a
-terminal file manager compared to Finder, Nautilus and so on, then this previewer
-fits perfectly into the previwing plugins that exists for for example
+terminal file manager compared to Finder, Nautilus and so on, then this previewer fits
+perfectly into the previwing plugins that exists for for example
 [nnn](https://github.com/jarun/nnn) and [lf](https://github.com/gokcehan/lf).
 
-````bash=10
+```bash=10
 nc) fifo_pager ncdump-rich -i "$1" ;;
-``````
+```
 
 ![ncdump-rich-example](https://raw.githubusercontent.com/engeir/ncdump-rich/main/demo/nnn-demo.png)

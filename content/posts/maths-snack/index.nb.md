@@ -1,7 +1,8 @@
 ---
 contributors: ["Eirik Rolland Enger"]
 date: 2022-07-16T22:29:26-06:00
-description: "Et monorepo bestående av små simuleringer og implementasjoner av tallserier"
+description:
+  "Et monorepo bestående av små simuleringer og implementasjoner av tallserier"
 images: ["snowy_hills.png"]
 lastmod: 2025-10-07T20:49:59+0200
 lead: "Et monorepo bestående av små simuleringer og implementasjoner av tallserier"

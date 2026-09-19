@@ -40,15 +40,15 @@ set-up for all my devices at once.
 ### Dockerize env
 
 Before setting up the docker image, let us first figure out how we can easily configure
-this via environment variables. [Whoogle support many of
-them](https://github.com/benbusby/whoogle-search#environment-variables), so it's good to
-know how to deal with that right away.
+this via environment variables.
+[Whoogle support many of them](https://github.com/benbusby/whoogle-search#environment-variables),
+so it's good to know how to deal with that right away.
 
-One issue is when setting the colour theme, which spans many lines, since [docker cannot
-pass newlines from variables in `--env-file`
-files](https://github.com/moby/moby/issues/12997). We solve this with a handy little
-script called [dockerize-env](https://gist.github.com/hudon/149466af21dfc52fdc70). It's
-described how to use it in the script, but in short, you define all variables in `.env`:
+One issue is when setting the colour theme, which spans many lines, since
+[docker cannot pass newlines from variables in `--env-file` files](https://github.com/moby/moby/issues/12997).
+We solve this with a handy little script called
+[dockerize-env](https://gist.github.com/hudon/149466af21dfc52fdc70). It's described how
+to use it in the script, but in short, you define all variables in `.env`:
 
 ```env {title=".env"}
 WHOOGLE_CONFIG_LANGUAGE=lang_no
@@ -87,17 +87,18 @@ At this point, a whoogle search should be available at
 ## Self-hosting
 
 The tricky part for me was to understand how I would take this to my server where I am
-running [Nginx](https://nginx.org/en/) as a reverse proxy server with https
-using [certbot](https://certbot.eff.org/), when I am not just pointing to local files,
-but are running software in a container. Suddenly you have to deal with the IP address
-of the container and different ports that the image expects.
+running [Nginx](https://nginx.org/en/) as a reverse proxy server with https using
+[certbot](https://certbot.eff.org/), when I am not just pointing to local files, but are
+running software in a container. Suddenly you have to deal with the IP address of the
+container and different ports that the image expects.
 
 ### Nginx and setting up a website
 
 I first got started with my website by following along the guide at
 [landchad.net](https://landchad.net), which is why I'm using Vultr and Nginx (and
 [Epik](https://www.epik.com/)) in the first place. This also means that my static site
-at [eirik.re](https://eirik.re) is configured via a file in `/etc/nginx/sites-available/` as
+at [eirik.re](https://eirik.re) is configured via a file in
+`/etc/nginx/sites-available/` as
 
 ```nginx {title="/etc/nginx/sites-available/eirikre"}
 server {
@@ -148,10 +149,10 @@ $ ip a
 
 The `ip a` command gives a lot of output, but you can find docker listed there, and
 after `inet` on the second line of the docker block, we find the IP address as
-`172.17.0.1`! From the Whoogle README we actually do get an [Nginx configuration
-file](https://github.com/benbusby/whoogle-search#nginx) that "works", but having the
-actual IP address was crucial to get `certbot` to accept it. So we make a tiny change to
-the config file, so that it now reads
+`172.17.0.1`! From the Whoogle README we actually do get an
+[Nginx configuration file](https://github.com/benbusby/whoogle-search#nginx) that
+"works", but having the actual IP address was crucial to get `certbot` to accept it. So
+we make a tiny change to the config file, so that it now reads
 
 ```nginx {title="/etc/nginx/sites-available/whoogle"}
 server {
@@ -201,11 +202,11 @@ Let us spectate the greate success!
 ## Resources
 
 To get it all working, some guides were particularly useful, other than what I have
-linked to throughout the post so far. This guide on the [nginx reverse
-proxy](https://www.techaddressed.com/tutorials/basic-nginx-reverse-proxy/) is super
-useful to understand what should go in the Nginx configuration file, and then the same
-site has a guide on how to [set up whoogle search with
-docker](https://www.techaddressed.com/tutorials/setup-whoogle-search-docker/). Still,
-the maybe most useful to me was to watch [this guy do this exact
-thing](https://www.youtube.com/watch?v=aq3mZrDbbYQ), but using GUIs instead of the
-command line.
+linked to throughout the post so far. This guide on the
+[nginx reverse proxy](https://www.techaddressed.com/tutorials/basic-nginx-reverse-proxy/)
+is super useful to understand what should go in the Nginx configuration file, and then
+the same site has a guide on how to
+[set up whoogle search with docker](https://www.techaddressed.com/tutorials/setup-whoogle-search-docker/).
+Still, the maybe most useful to me was to watch
+[this guy do this exact thing](https://www.youtube.com/watch?v=aq3mZrDbbYQ), but using
+GUIs instead of the command line.

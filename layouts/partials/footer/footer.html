@@ -1,21 +1,21 @@
 <footer class="footer text-muted">
-  <div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}">
-    <div class="row">
-      <div class="col-lg-8 order-last order-lg-first">
-        <ul class="list-inline">
-          <li class="list-inline-item">{{ .Site.Params.footer | emojify | safeHTML }}</li>
-        </ul>
-      </div>
-      <div class="col-lg-8 order-first order-lg-last text-lg-end">
-        <ul class="list-inline">
-          {{ range .Site.Menus.footer -}}
-            <li class="list-inline-item"><a href="{{ .URL | relURL }}">{{ .Name | emojify }}</a></li>
-          {{ end -}}
-          {{ if eq .Section "blog" -}}
-          <li class="list-inline-item"><a href="{{ "blog/rss.xml" | relLangURL }}">&#x2BAD; RSS</a></li>
-          {{- end }}
-        </ul>
-      </div>
+<div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}">
+  <div class="row">
+    <div class="col-lg-8 order-last order-lg-first">
+      <ul class="list-inline">
+        <li class="list-inline-item">{{ .Site.Params.footer | emojify | safeHTML }}</li>
+      </ul>
     </div>
+    <div class="col-lg-8 order-first order-lg-last text-lg-end">
+      <ul class="list-inline">
+        {{ range .Site.Menus.footer -}}
+        <li class="list-inline-item"><a href="{{ .URL | relURL }}">{{ .Name | emojify }}</a></li>
+        {{ end -}}
+        {{ if eq .Section "blog" -}}
+        <li class="list-inline-item"><a href="{{ "blog/rss.xml" | relLangURL }}">⮭ RSS</a></li>
+        {{- end }}
+      </ul>
+    </div>
+  </div>
   </div>
 </footer>

@@ -11,8 +11,8 @@ title: "Maths Snack"
 weight: 10
 ---
 
-The **Maths Snack** [:link:](https://maths-snack.eirik.re/) repository is filled up
-with anything that is interesting either visually or because of the mathematics, most
-often both.
+The **Maths Snack** [:link:](https://maths-snack.eirik.re/) repository is filled up with
+anything that is interesting either visually or because of the mathematics, most often
+both.
 
 ![snowy-hills-from-math-snack-library](https://raw.githubusercontent.com/engeir/maths-snack/master/lookbook/snowy_hills.png)

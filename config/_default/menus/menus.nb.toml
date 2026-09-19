@@ -54,39 +54,39 @@ url = "https://sifa.id/p/eirik.re"
 weight = 40
 
 [[sidebar_docs]]
-  name = "Guides"
-  pageRef = "/docs/guides"
-  weight = 10
+name = "Guides"
+pageRef = "/docs/guides"
+weight = 10
 
 [[sidebar_docs]]
-  name = "Reference"
-  pageRef = "/docs/reference"
-  weight = 20
+name = "Reference"
+pageRef = "/docs/reference"
+weight = 20
 
 [[sidebar_docs]]
-  name = "Resources"
-  pageRef = "/docs/resources"
-  weight = 30
+name = "Resources"
+pageRef = "/docs/resources"
+weight = 30
 
 [[sidebar_posts]]
-  name = "Maths Snack"
-  pageRef = "/posts/maths-snack"
-  weight = 10
+name = "Maths Snack"
+pageRef = "/posts/maths-snack"
+weight = 10
 
 [[sidebar_posts]]
-  name = "Northern Lights Forecast"
-  pageRef = "/posts/northern-lights-forecast"
-  weight = 20
+name = "Northern Lights Forecast"
+pageRef = "/posts/northern-lights-forecast"
+weight = 20
 
 [[sidebar_posts]]
-  name = "Remarkable Splashscreens"
-  pageRef = "/posts/remarkable-splashscreens"
-  weight = 30
+name = "Remarkable Splashscreens"
+pageRef = "/posts/remarkable-splashscreens"
+weight = 30
 
 [[sidebar_posts]]
-  name = "Rich NcDump"
-  pageRef = "/posts/rich-ncdump"
-  weight = 40
+name = "Rich NcDump"
+pageRef = "/posts/rich-ncdump"
+weight = 40
 
 [[footer]]
 name = "Kildekode"

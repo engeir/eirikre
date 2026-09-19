@@ -2,11 +2,14 @@
 categories: [Projects]
 contributors: ["Eirik Rolland Enger"]
 date: 2022-07-16T22:28:16-06:00
-description: "CLI tool that notifies about northern light events, with support for a telegram bot"
-excerpt: "CLI tool that notifies about northern light events, with support for a telegram bot"
+description:
+  "CLI tool that notifies about northern light events, with support for a telegram bot"
+excerpt:
+  "CLI tool that notifies about northern light events, with support for a telegram bot"
 images: ["northern-lights.JPG"]
 lastmod: 2025-10-07T20:49:24+0200
-lead: "CLI tool that notifies about northern light events, with support for a telegram bot"
+lead:
+  "CLI tool that notifies about northern light events, with support for a telegram bot"
 tags: [CLI, python, raspberry-pi]
 title: "Northern Lights Forecast"
 weight: 20
@@ -33,6 +36,7 @@ nlf -l Tromsø
 
 <!-- ![nlf qr](nlf-bot.jpg) -->
 
-{{< callout context="note" title="Note" icon="qrcode" >}} Scan the QR code to get directly to the telegram bot! {{< /callout >}}
+{{< callout context="note" title="Note" icon="qrcode" >}} Scan the QR code to get
+directly to the telegram bot! {{< /callout >}}
 
 {{< img src="nlf-bot.jpg" fillImage="778x660 jpg" >}}

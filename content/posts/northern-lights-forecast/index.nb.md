@@ -2,11 +2,16 @@
 categories: [Projects]
 contributors: ["Eirik Rolland Enger"]
 date: 2022-07-16T22:28:16-06:00
-description: "Kommandolinjeprogram som varsler om pågående nordly-hendelser, med støtte for telegram-bot"
-excerpt: "CLI tool to be notified about northern light events, with support for a telegram bot"
+description:
+  "Kommandolinjeprogram som varsler om pågående nordly-hendelser, med støtte for
+  telegram-bot"
+excerpt:
+  "CLI tool to be notified about northern light events, with support for a telegram bot"
 images: ["northern-lights.JPG"]
 lastmod: 2025-10-07T20:49:39+0200
-lead: "Kommandolinjeprogram som varsler om pågående nordly-hendelser, med støtte for telegram-bot"
+lead:
+  "Kommandolinjeprogram som varsler om pågående nordly-hendelser, med støtte for
+  telegram-bot"
 tags: [CLI, python, raspberry-pi]
 title: "Northern Lights Forecast"
 weight: 20

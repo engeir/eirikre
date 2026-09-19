@@ -1,95 +1,162 @@
 {{ define "main" }}
 {{ end }}
-
 {{ define "sidebar-prefooter" }}
-<section style="position: relative; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%); margin-top: -6rem; padding-top: 6rem; padding-bottom: 3rem; overflow: hidden;">
-    <!-- Background with blur -->
-    <div class="bg-collatz" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; filter: blur(3px); z-index: 0;"></div>
-
-    <!-- Overlay for better contrast -->
-    <div class="bg-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;"></div>
-
-    <!-- Content -->
-    <div style="position: relative; z-index: 2;">
-        <!-- Profile Section -->
-        <div class="pb-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-xl-6 text-center">
-                    <img src="{{ "my-github-logo.jpg" | relURL }}" alt="Profile" class="border-0 rounded-circle mb-4" style="max-width: 150px;">
-                    <h1 class="mt-0">{{ .Title }}</h1>
-                    <p class="lead">{{ .Params.lead | safeHTML }}</p>
-                </div>
-            </div>
+<section style="position: relative;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+                padding-left: calc(50vw - 50%);
+                padding-right: calc(50vw - 50%);
+                margin-top: -6rem;
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+                overflow: hidden">
+  <!-- Background with blur -->
+  <div class="bg-collatz"
+       style="position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              filter: blur(3px);
+              z-index: 0"></div>
+  <!-- Overlay for better contrast -->
+  <div class="bg-overlay"
+       style="position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: 1"></div>
+  <!-- Content -->
+  <div style="position: relative; z-index: 2;">
+    <!-- Profile Section -->
+    <div class="pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6 text-center">
+          <img src="{{ "my-github-logo.jpg" | relURL }}"
+               alt="Profile"
+               class="border-0 rounded-circle mb-4"
+               style="max-width: 150px">
+          <h1 class="mt-0">{{ .Title }}</h1>
+          <p class="lead">{{ .Params.lead | safeHTML }}</p>
         </div>
-
-        <!-- Terminal Window -->
-        <div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10 col-xl-8">
-                    <div class="terminal-window" style="border-radius: 8px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); padding: 1.5rem; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;">
-                        <!-- Terminal content -->
-                        <div style="font-size: 0.9rem; line-height: 1.7;">
-                            {{ if eq $.Site.Language.LanguageName "English" }}
-                            <div style="margin-bottom: 1.2rem;">
-                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info sites/</div>
-                                <div style="margin-top: 0.4rem; font-family: monospace;">
-                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 25ch;">Info</span> Name</div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 25ch;">personal cookbook</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 25ch;">music listening stats</span> <a href="https://music.eirik.re" class="terminal-link" style="text-decoration: none;">music/</a></div>
-                                    <!-- <div><span class="terminal-info" style="display: inline-block; width: 25ch;">photo collection</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div> -->
-                                </div>
-                            </div>
-
-                            <div style="margin-bottom: 1.2rem;">
-                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info links/</div>
-                                <div style="margin-top: 0.4rem; font-family: monospace;">
-                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 25ch;">Info</span> Name</div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 25ch;">code & repos</span> <a href="https://github.com/engeir" class="terminal-link" style="text-decoration: none;">github</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 25ch;">toots & thoughts</span> <a href="https://mastodon.social/@eirikre" rel="me" class="terminal-link" style="text-decoration: none;">mastodon</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 25ch;">skeets & posts</span> <a href="https://mu.social/profile/eirik.re" class="terminal-link" style="text-decoration: none;">atproto</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 25ch;">pics & pixels</span> <a href="https://pixelfed.social/eirikre" class="terminal-link" style="text-decoration: none;">pixelfed</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 25ch;">professional stuff</span> <a href="https://sifa.id/p/eirik.re" class="terminal-link" style="text-decoration: none;">sifa.id</a></div>
-                                </div>
-                            </div>
-
-                            <div class="terminal-prompt">
-                                <span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor" style="display: inline-block; width: 8px; height: 1em; margin-left: 2px; animation: blink 1s step-end infinite;"></span>
-                            </div>
-                            {{ else }}
-                            <div style="margin-bottom: 1.2rem;">
-                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info nettsteder/</div>
-                                <div style="margin-top: 0.4rem; font-family: monospace;">
-                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Navn</div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personlig kokebok</span> <a href="https://mere.eirik.re" class="terminal-link" style="text-decoration: none;">mere/</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">musikklytting</span> <a href="https://music.eirik.re" class="terminal-link" style="text-decoration: none;">music/</a></div>
-                                </div>
-                            </div>
-
-                            <div style="margin-bottom: 1.2rem;">
-                                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info lenker/</div>
-                                <div style="margin-top: 0.4rem; font-family: monospace;">
-                                    <div class="terminal-header" style="margin-bottom: 0.2rem;"><span style="display: inline-block; width: 20ch;">Info</span> Navn</div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">kode & repos</span> <a href="https://github.com/engeir" class="terminal-link" style="text-decoration: none;">github</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">tuter & tanker</span> <a href="https://mastodon.social/@eirikre" rel="me" class="terminal-link" style="text-decoration: none;">mastodon</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">poster & innlegg</span> <a href="https://mu.social/profile/eirik.re" class="terminal-link" style="text-decoration: none;">atproto</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">bilder & piksler</span> <a href="https://pixelfed.social/eirikre" class="terminal-link" style="text-decoration: none;">pixelfed</a></div>
-                                    <div><span class="terminal-info" style="display: inline-block; width: 20ch;">profesjonelt</span> <a href="https://sifa.id/p/eirik.re" class="terminal-link" style="text-decoration: none;">sifa.id</a></div>
-                                </div>
-                            </div>
-
-                            <div class="terminal-prompt">
-                                <span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor" style="display: inline-block; width: 8px; height: 1em; margin-left: 2px; animation: blink 1s step-end infinite;"></span>
-                            </div>
-                            {{ end }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <!-- Terminal Window -->
+    <div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="terminal-window"
+               style="border-radius: 8px;
+                      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                      padding: 1.5rem;
+                      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace">
+            <!-- Terminal content -->
+            <div style="font-size: 0.9rem; line-height: 1.7;">
+              {{ if eq $.Site.Language.LanguageName "English" }}
+              <div style="margin-bottom: 1.2rem;">
+                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info sites/</div>
+                <div style="margin-top: 0.4rem; font-family: monospace;">
+                  <div class="terminal-header"
+                       style="margin-bottom: 0.2rem"><span style="display: inline-block;
+             width: 25ch">Info</span> Name</div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 25ch;">personal cookbook</span> <a href="https://mere.eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">mere/</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 25ch;">music listening stats</span> <a href="https://music.eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">music/</a></div>
+                  <!-- <div><span class="terminal-info" style="display: inline-block; width: 25ch;">photo collection</span> <a href="https://gallery.eirik.re" class="terminal-link" style="text-decoration: none;">gallery/</a></div> -->
+                </div>
+              </div>
+              <div style="margin-bottom: 1.2rem;">
+                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info links/</div>
+                <div style="margin-top: 0.4rem; font-family: monospace;">
+                  <div class="terminal-header"
+                       style="margin-bottom: 0.2rem"><span style="display: inline-block;
+             width: 25ch">Info</span> Name</div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 25ch;">code & repos</span> <a href="https://github.com/engeir"
+    class="terminal-link"
+    style="text-decoration: none">github</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 25ch;">toots & thoughts</span> <a href="https://mastodon.social/@eirikre"
+    rel="me"
+    class="terminal-link"
+    style="text-decoration: none">mastodon</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 25ch;">skeets & posts</span> <a href="https://mu.social/profile/eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">atproto</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 25ch;">pics & pixels</span> <a href="https://pixelfed.social/eirikre"
+    class="terminal-link"
+    style="text-decoration: none">pixelfed</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 25ch;">professional stuff</span> <a href="https://sifa.id/p/eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">sifa.id</a></div>
+                </div>
+              </div>
+              <div class="terminal-prompt">
+                <span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor"
+       style="display: inline-block;
+              width: 8px;
+              height: 1em;
+              margin-left: 2px;
+              animation: blink 1s step-end infinite"></span>
+              </div>
+            {{ else }}
+              <div style="margin-bottom: 1.2rem;">
+                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info nettsteder/</div>
+                <div style="margin-top: 0.4rem; font-family: monospace;">
+                  <div class="terminal-header"
+                       style="margin-bottom: 0.2rem"><span style="display: inline-block;
+             width: 20ch">Info</span> Navn</div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 20ch;">personlig kokebok</span> <a href="https://mere.eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">mere/</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 20ch;">musikklytting</span> <a href="https://music.eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">music/</a></div>
+                </div>
+              </div>
+              <div style="margin-bottom: 1.2rem;">
+                <div class="terminal-prompt"><span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ ls --info lenker/</div>
+                <div style="margin-top: 0.4rem; font-family: monospace;">
+                  <div class="terminal-header"
+                       style="margin-bottom: 0.2rem"><span style="display: inline-block;
+             width: 20ch">Info</span> Navn</div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 20ch;">kode & repos</span> <a href="https://github.com/engeir"
+    class="terminal-link"
+    style="text-decoration: none">github</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 20ch;">tuter & tanker</span> <a href="https://mastodon.social/@eirikre"
+    rel="me"
+    class="terminal-link"
+    style="text-decoration: none">mastodon</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 20ch;">poster & innlegg</span> <a href="https://mu.social/profile/eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">atproto</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 20ch;">bilder & piksler</span> <a href="https://pixelfed.social/eirikre"
+    class="terminal-link"
+    style="text-decoration: none">pixelfed</a></div>
+                  <div><span class="terminal-info" style="display: inline-block; width: 20ch;">profesjonelt</span> <a href="https://sifa.id/p/eirik.re"
+    class="terminal-link"
+    style="text-decoration: none">sifa.id</a></div>
+                </div>
+              </div>
+              <div class="terminal-prompt">
+                <span class="terminal-user">eirikre@internet</span>:<span class="terminal-path">~</span>$ <span class="terminal-cursor"
+       style="display: inline-block;
+              width: 8px;
+              height: 1em;
+              margin-left: 2px;
+              animation: blink 1s step-end infinite"></span>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 {{ end }}
-
 {{ define "sidebar-footer" }}
 <!-- <section class="section section-sm container-fluid"> -->
 <!--     <div class="row justify-content-center text-center"> -->
@@ -99,4 +166,3 @@
 <!--     </div> -->
 <!-- </section> -->
 {{ end }}
-

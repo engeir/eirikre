@@ -1,31 +1,38 @@
 # AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) and similar AI/LLM agents when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) and similar AI/LLM agents
+when working with code in this repository.
 
 ## Project Overview
 
-This is a multilingual personal website built with Hugo and the Hyas/Doks framework. It features blog posts, documentation, and project showcases in both English and Norwegian (Bokmål).
+This is a multilingual personal website built with Hugo and the Hyas/Doks framework. It
+features blog posts, documentation, and project showcases in both English and Norwegian
+(Bokmål).
 
 ## Build Commands
 
 **Development:**
+
 ```bash
 npm run dev                # Start dev server (localhost:1313)
 npm run dev:drafts        # Start dev server including draft content
 ```
 
 **Production:**
+
 ```bash
 npm run build             # Build for production (minified)
 npm run preview           # Preview production build locally
 ```
 
 **Content Management:**
+
 ```bash
 npm run create <path>     # Create new content (e.g., npm run create blog/my-post/index.md)
 ```
 
 **Linting:**
+
 ```bash
 npm run lint              # Run all linters
 npm run lint:scripts      # Lint JavaScript files
@@ -34,6 +41,7 @@ npm run lint:markdown     # Lint markdown files
 ```
 
 **Cleanup:**
+
 ```bash
 npm run clean             # Clean all generated files
 npm run clean:build       # Remove public/, resources/, and .hugo_build.lock
@@ -44,9 +52,11 @@ npm run clean:lint        # Remove lint cache files
 
 ### Hugo + Hyas/Doks Framework
 
-This project uses Hugo (v0.123.7) extended edition with the Hyas/Doks-core framework, which provides a modern documentation and blog theme with extensive features.
+This project uses Hugo (v0.123.7) extended edition with the Hyas/Doks-core framework,
+which provides a modern documentation and blog theme with extensive features.
 
 **Key Dependencies:**
+
 - `@hyas/doks-core` - Core Doks theme functionality
 - `@hyas/images` - Image processing and optimization
 - `@hyas/inline-svg` - SVG icon support (uses Tabler Icons)
@@ -64,7 +74,9 @@ This project uses Hugo (v0.123.7) extended edition with the Hyas/Doks-core frame
 
 ### Module Mount System
 
-The project uses Hugo's module mount system defined in `config/_default/module.toml`. Templates and assets from npm packages (@hyas/* modules) are mounted into the Hugo filesystem, allowing selective overrides in the local directories.
+The project uses Hugo's module mount system defined in `config/_default/module.toml`.
+Templates and assets from npm packages (@hyas/* modules) are mounted into the Hugo
+filesystem, allowing selective overrides in the local directories.
 
 ### Multilingual Setup
 
@@ -114,6 +126,7 @@ The project uses Hugo's module mount system defined in `config/_default/module.t
 ### Content Creation Notes
 
 When creating new content:
+
 - Blog posts: Place in `content/blog/` with date-based structure
 - Project posts: Place in `content/posts/` as page bundles (index.md + images)
 - Support both English and Norwegian versions (index.md and index.nb.md)
@@ -121,4 +134,5 @@ When creating new content:
 
 ### Package Manager
 
-This project uses **pnpm** (not npm). The package manager is enforced via `packageManager` field in package.json.
+This project uses **pnpm** (not npm). The package manager is enforced via
+`packageManager` field in package.json.
