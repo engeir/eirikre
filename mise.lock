@@ -170,10 +170,6 @@ url = "https://github.com/apple/pkl/releases/download/0.32.1/pkl-macos-amd64"
 checksum = "sha256:8550a00fcf027335e42c5e2cd553b88e98845408cb1880b3e3d1860caf46d22a"
 url = "https://github.com/apple/pkl/releases/download/0.32.1/pkl-windows-amd64.exe"
 
-[[tools.usage]]
-version = "6.9.0"
-backend = "asdf:usage"
-
 [[tools.uv]]
 version = "0.12.17"
 backend = "asdf:uv"

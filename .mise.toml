@@ -4,7 +4,6 @@ hugo = "latest"
 node = "latest"
 pinact = "latest"
 pkl = "latest"
-usage = "latest"
 uv = "latest"
 # "npm:sequoia-cli" = "latest"
 
