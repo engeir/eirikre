@@ -80,6 +80,17 @@ Unchanged — no new failure modes; absent/undefined `owned` simply renders no p
 - The dead `paused` status and `tags` code paths (known schema drift, separate fix).
 - Any changes to BookHive records or the PDS.
 
+## Follow-up: Read group and rating tier ordering (approved 2026-09-22)
+
+- **Read group:** `finishedAt` newest first; books without `finishedAt` at the bottom;
+  ties and undated books ordered by author surname A–Z.
+- **Surname rule:** last whitespace token of the first author (authors are tab
+  separated); empty authors falls back to title. Known limit: particles sort under the
+  last word ("van Gogh" → G).
+- **Rating tiers:** surname A–Z replaces title A–Z (title as tiebreak).
+- **Other status groups:** unchanged (`createdAt` desc).
+- Covered by `pnpm test:books` (`tests/owned-pill.mjs`).
+
 ## Testing
 
 Extend the existing Node DOM-shim harness used for the rating-tiers work (loads the

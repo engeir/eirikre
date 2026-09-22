@@ -157,6 +157,7 @@ interface DisplayBook {
   totalPages?: number;
   createdAt?: string;
   owned?: boolean;
+  finishedAt?: string;
 }
 
 function convertToDisplayBook(record: BookHiveBookRecord): DisplayBook {
@@ -193,8 +194,22 @@ function convertToDisplayBook(record: BookHiveBookRecord): DisplayBook {
     currentPage: record.bookProgress?.currentPage,
     totalPages: record.bookProgress?.totalPages,
     createdAt: record.createdAt,
+    finishedAt: record.finishedAt,
     owned: record.owned,
   };
+}
+
+function authorSurname(authors: string): string {
+  const first = (authors || "").split("\t")[0].trim();
+  const parts = first.split(/\s+/).filter(Boolean);
+  return parts[parts.length - 1] || "";
+}
+
+function surnameThenTitle(a: DisplayBook, b: DisplayBook): number {
+  const key = (book: DisplayBook) => authorSurname(book.authors) || book.title;
+  const cmp = key(a).localeCompare(key(b), undefined, { sensitivity: "base" });
+  if (cmp !== 0) return cmp;
+  return a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
 }
 
 // Group books by reading status and render full cards
@@ -323,15 +338,12 @@ const RATING_TIERS = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1];
 
 // Group books into rating tiers and render a compact cover grid
 function renderByRatingMarkup(books: DisplayBook[]): string {
-  const byTitle = (a: DisplayBook, b: DisplayBook) =>
-    a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
-
   const tiers = RATING_TIERS.map((tier) => ({
     label: `<span class="text-warning">${renderStars(tier)}</span>`,
-    books: books.filter((book) => book.rating === tier).sort(byTitle),
+    books: books.filter((book) => book.rating === tier).sort(surnameThenTitle),
   }));
 
-  const unrated = books.filter((book) => book.rating === undefined).sort(byTitle);
+  const unrated = books.filter((book) => book.rating === undefined).sort(surnameThenTitle);
   if (unrated.length > 0) {
     tiers.push({ label: "Unrated", books: unrated });
   }
@@ -453,11 +465,22 @@ async function initBooksPage(): Promise<void> {
   const books = await fetchUserBooks();
   currentBooks = books.map(convertToDisplayBook);
 
-  // Sort by status priority, then by createdAt (newest first)
+  // Sort by status priority, then by createdAt (newest first).
+  // Read books sort by finishedAt (newest first, undated at the bottom, surname order).
   currentBooks.sort((a, b) => {
     const aPriority = STATUS_PRIORITY[a.status || ""] || 999;
     const bPriority = STATUS_PRIORITY[b.status || ""] || 999;
     if (aPriority !== bPriority) return aPriority - bPriority;
+    if (a.status === "finished") {
+      const af = a.finishedAt || "";
+      const bf = b.finishedAt || "";
+      if (af !== bf) {
+        if (!af) return 1;
+        if (!bf) return -1;
+        return bf.localeCompare(af);
+      }
+      return surnameThenTitle(a, b);
+    }
     return (b.createdAt || "").localeCompare(a.createdAt || "");
   });
 
