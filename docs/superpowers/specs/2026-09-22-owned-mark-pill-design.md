@@ -16,8 +16,8 @@ Replace the muted grey `Owned` text line on book cards with a quiet outlined pil
 - Today it renders as `<small style="...">Owned</small>` inside the meta stack of the
   "By status" card (`renderBookCard`).
 - Design was iterated in the visual companion: rubber-stamp treatments and cover
-  overlays were rejected; the chosen direction is a minimal outlined pill with a
-  book glyph, placed in the card body's lower-right corner.
+  overlays were rejected; the chosen direction is a minimal outlined pill with a book
+  glyph, placed in the card body's lower-right corner.
 
 ## Decisions
 
@@ -25,8 +25,8 @@ Replace the muted grey `Owned` text line on book cards with a quiet outlined pil
   muted secondary colour. No ink/stamp styling.
 - **Placement:** absolute bottom-right of the card body in the "By status" view only.
   The rating view's compact cover tiles are unchanged (no body space).
-- **Theming:** Bootstrap CSS variables only, so light and dark modes both work. The
-  pill carries the card background so wrapped tags can never visually collide with it.
+- **Theming:** Bootstrap CSS variables only, so light and dark modes both work. The pill
+  carries the card background so wrapped tags can never visually collide with it.
 - **Accessibility:** the word "Owned" is visible text (its own accessible name); a
   `title="Owned"` attribute adds hover affordance.
 - **Markup scoping:** the card wrapper gets a `book-card` class so the required
@@ -42,8 +42,8 @@ Remove the current owned `<small>` block and render, only when `book.owned` is t
 <span class="owned-pill" title="Owned"><i class="bi bi-book"></i>Owned</span>
 ```
 
-Also add `book-card` to the card wrapper's class list
-(`<div class="card shadow-sm">` → `<div class="card shadow-sm book-card">`).
+Also add `book-card` to the card wrapper's class list (`<div class="card shadow-sm">` →
+`<div class="card shadow-sm book-card">`).
 
 ### Styling (`assets/scss/common/_custom.scss`, books section)
 

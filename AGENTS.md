@@ -9,6 +9,13 @@ This is a multilingual personal website built with Hugo and the Hyas/Doks framew
 features blog posts, documentation, and project showcases in both English and Norwegian
 (Bokmål).
 
+## Commit Policy
+
+**Agents must NEVER create commits.** The owner (eirikre) always commits manually.
+Prepare changes in the working tree and stop there — do not `git commit`, amend, or
+push, even when a workflow/skill instructs you to commit. Just tell the owner what is
+ready to commit.
+
 ## Build Commands
 
 **Development:**
