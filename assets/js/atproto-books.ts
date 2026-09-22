@@ -22,6 +22,7 @@ interface BookHiveBookRecord {
     isbn13?: string;
   };
   createdAt?: string;
+  owned?: boolean;
   startedAt?: string;
   finishedAt?: string;
   review?: string;
@@ -155,6 +156,7 @@ interface DisplayBook {
   currentPage?: number;
   totalPages?: number;
   createdAt?: string;
+  owned?: boolean;
 }
 
 function convertToDisplayBook(record: BookHiveBookRecord): DisplayBook {
@@ -191,6 +193,7 @@ function convertToDisplayBook(record: BookHiveBookRecord): DisplayBook {
     currentPage: record.bookProgress?.currentPage,
     totalPages: record.bookProgress?.totalPages,
     createdAt: record.createdAt,
+    owned: record.owned,
   };
 }
 
@@ -215,7 +218,14 @@ function renderByStatusMarkup(books: DisplayBook[]): string {
   };
 
   // Ordered status keys
-  const orderedStatuses = ["reading", "finished", "wantToRead", "paused", "abandoned", "other"];
+  const orderedStatuses = [
+    "reading",
+    "finished",
+    "wantToRead",
+    "paused",
+    "abandoned",
+    "other",
+  ];
 
   return orderedStatuses
     .map((statusKey) => {
@@ -238,7 +248,8 @@ function renderByStatusMarkup(books: DisplayBook[]): string {
 function renderBookCard(book: DisplayBook): string {
   return `
                    <div class="col-12 col-md-6 col-lg-4">
-                     <div class="card shadow-sm">
+                      <div class="card shadow-sm book-card">
+
                       ${
                         book.coverUrl
                           ? `
@@ -285,6 +296,11 @@ function renderBookCard(book: DisplayBook): string {
                            `
                                : ""
                            }
+                            ${
+                              book.owned
+                                ? `<span class="owned-pill" title="Owned"><i class="bi bi-book"></i>Owned</span>`
+                                : ""
+                            }
                           ${
                             book.tags && book.tags.length > 0
                               ? `
